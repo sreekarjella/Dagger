@@ -3,7 +3,7 @@
   "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "alpha": {
+    "dagger": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/alpha",
+            "outputPath": "dist/dagger",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "alpha:build"
+            "browserTarget": "dagger:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "alpha:build:production"
+              "browserTarget": "dagger:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "alpha:build"
+            "browserTarget": "dagger:build"
           }
         },
         "test": {
@@ -114,15 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "alpha:serve"
+            "devServerTarget": "dagger:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "alpha:serve:production"
+              "devServerTarget": "dagger:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "alpha"
+  "defaultProject": "dagger"
 }
