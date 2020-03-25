@@ -1,0 +1,7 @@
+{
+  "name": "dagger",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
