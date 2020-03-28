@@ -1,4 +1,4 @@
-export class Torrents {
+export interface Torrents {
     url: string;
     hash: string;
     quality: string;

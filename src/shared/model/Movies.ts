@@ -1,6 +1,6 @@
 import { Torrents } from './Torrents';
 
-export class Movies {
+export interface Movies {
     id: number;
     url: string;
     imdb_code: string;

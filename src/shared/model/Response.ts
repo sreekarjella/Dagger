@@ -1,6 +1,6 @@
 import { Data } from './Data';
 
-export class Response {
+export interface Response {
     status: string;
     status_message: string;
     data: Data;

@@ -1,6 +1,6 @@
 import { Movies } from './Movies';
 
-export class Data {
+export interface Data {
     movie_count: number;
     limit: number;
     page_number: number;
