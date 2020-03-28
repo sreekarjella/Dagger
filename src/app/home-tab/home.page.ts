@@ -1,3 +1,5 @@
+import { MockService } from './../../shared/services/mock.service';
+import { Movies } from './../../shared/model/Movies';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +9,21 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  featureMovies: Movies[] = [];
 
+  constructor(private mockService: MockService) {
+    this.getFeaturedMovies();
+    console.log(this.featureMovies);
+  }
+
+  getFeaturedMovies() {
+    this.mockService.getFeaturedMovies().subscribe(
+      (response) => {
+        console.log(response.data.movies);
+        if (response.status.match('ok')) {
+          this.featureMovies = response.data.movies;
+        }
+      }
+    );
+  }
 }

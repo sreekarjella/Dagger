@@ -11,6 +11,10 @@ export class MockService {
   constructor(private httpClient: HttpClient) { }
 
   public getListOfMovies(): Observable<any> {
-    return this.httpClient.get(environment.listOfMovies)
+    return this.httpClient.get(environment.listOfMovies);
+  }
+
+  public  getFeaturedMovies(): Observable<any> {
+    return this.httpClient.get(environment.listOfMovies);
   }
 }

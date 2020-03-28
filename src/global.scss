@@ -24,3 +24,22 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+:root {
+    --header-margin: 50px;
+}
+
+.toolbar-size {
+    height: var(--header-margin);
+}
+
+.content-margin {
+    margin-top: var(--header-margin);
+}
+
+.spinner-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
