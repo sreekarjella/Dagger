@@ -1,3 +1,8 @@
-<p>
-  slide-content works!
-</p>
+<ion-slides pager="true" [options]="slideOpts" scrollbar="true">
+  <div *ngFor="let movie of movies">
+    <ion-slide>
+      <ion-img [src]="movie.medium_cover_image"></ion-img>
+    </ion-slide>
+  </div>
+  
+</ion-slides>

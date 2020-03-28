@@ -1,10 +1,6 @@
-import { Movies } from './../shared/model/Movies';
-import { MockService } from './../shared/services/mock.service';
 import { Component, OnInit } from '@angular/core';
 
-import { Platform, LoadingController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Platform } from '@ionic/angular';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
 import { Capacitor, Plugins } from '@capacitor/core';
 
@@ -16,10 +12,7 @@ import { Capacitor, Plugins } from '@capacitor/core';
 export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
-    private router: Router,
-    private loadingController: LoadingController
+    private router: Router
   ) {
     this.initializeApp();
   }

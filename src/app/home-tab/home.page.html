@@ -1,7 +1,9 @@
 <ion-content fullscreen class="has-header has-subheader">
-  <!-- <div *ngFor="let movie of featureMovies">
-    <h1>{{movie.title_english}}</h1>
-  </div> -->
-  <app-slide-content></app-slide-content>
+
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let movie of moviesByDate">
+      <ion-img class="slide-content-image" [alt]="movie.title_english" [src]="movie.large_cover_image"></ion-img>
+    </ion-slide>
+  </ion-slides>
 
 </ion-content>
