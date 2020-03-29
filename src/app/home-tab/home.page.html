@@ -1,21 +1,21 @@
 <ion-content fullscreen>
 
   <ion-slides pager="true" [options]="bannerSlideOpts">
-    <ion-slide *ngFor="let movie of moviesByDate">
+    <ion-slide *ngFor="let movie of moviesByDate" (click)="showMovieDetails(movie)">
       <ion-img class="slide-content-image" [alt]="movie.title_english" [src]="movie.large_cover_image"></ion-img>
     </ion-slide>
   </ion-slides>
 
   <ion-text class="ion-padding"><h4>Most viewed</h4></ion-text>
-  <ion-slides [options]="slideOpts">
-    <ion-slide *ngFor="let movie of mostViewedMovies">
+  <ion-slides [options]="movieCatalogSlideOption">
+    <ion-slide *ngFor="let movie of mostViewedMovies" (click)="showMovieDetails(movie)">
       <ion-img [alt]="movie.title_english" [src]="movie.large_cover_image"></ion-img>
     </ion-slide>
   </ion-slides>
 
   <ion-text class="ion-padding"><h4>Top rated movies</h4></ion-text>
-  <ion-slides [options]="slideOpts">
-    <ion-slide *ngFor="let movie of topRatedMovies">
+  <ion-slides [options]="movieCatalogSlideOption">
+    <ion-slide *ngFor="let movie of topRatedMovies" (click)="showMovieDetails(movie)">
       <ion-img [alt]="movie.title_english" [src]="movie.large_cover_image"></ion-img>
     </ion-slide>
   </ion-slides>

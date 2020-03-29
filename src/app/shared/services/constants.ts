@@ -40,7 +40,7 @@ export const LIST_MOVIES_PARAMETERS = {
     }
 };
 
-export const slideOptions = {
+export const bannerSlideOptions = {
     slidesPerView: 3,
     autoplay: {
         delay: 2000,
@@ -133,4 +133,12 @@ export const slideOptions = {
                 .transition(duration);
         }
     }
+};
+
+export const movieCatalogSLideOptions = {
+    initialSlide: 0,
+    speed: 400,
+    slidesPerView: 3,
+    spaceBetween: 50,
+    centeredSlides: false,
 };
