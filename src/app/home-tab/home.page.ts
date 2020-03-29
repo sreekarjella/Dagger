@@ -11,33 +11,32 @@ import * as Constants from '@shared/services/constants';
 })
 export class HomePage implements OnInit {
 
-  featureMovies: Movies[] = [];
   moviesByDate: Movies[] = [];
-  slideOpts: any;
+  mostViewedMovies: Movies[] = [];
+  topRatedMovies: Movies[] = [];
+  bannerSlideOpts: any;
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400,
+    slidesPerView: 3,
+    spaceBetween: 50,
+    centeredSlides: false,
+  };
 
 
   constructor(
     private mockService: MockService,
     private loadingController: LoadingController
   ) {
-    this.getFeaturedMovies();
-    this.presentLoadingController();
-    this.slideOpts = Constants.slideOptions;
   }
   ngOnInit() {
+    this.presentLoadingController();
+    this.bannerSlideOpts = Constants.slideOptions;
+    this.getLatestMoviesByDate();
+    this.getMostViewedMovies();
+    this.getTopRatedMovies();
   }
 
-  getFeaturedMovies() {
-    this.mockService.getFeaturedMovies().subscribe(
-      (response) => {
-        if (response.status.match('ok')) {
-          this.featureMovies = response.data.movies;
-          this.getLatestMoviesByDate();
-          this.loadingController.dismiss();
-        }
-      }
-    );
-  }
 
   getLatestMoviesByDate() {
     this.mockService.getLatestMoviesByDate().subscribe(
@@ -45,6 +44,23 @@ export class HomePage implements OnInit {
         if (response.status.match('ok')) {
           this.moviesByDate = response.data.movies;
         }
+      }
+    );
+  }
+
+  getMostViewedMovies() {
+    this.mockService.getMostViewedMovies().subscribe(
+      (response) => {
+        this.mostViewedMovies = response.data.movies;
+      }
+    );
+  }
+
+  getTopRatedMovies() {
+    this.mockService.getTopRatedMovies().subscribe(
+      (response) => {
+        this.topRatedMovies = response.data.movies;
+        this.loadingController.dismiss();
       }
     );
   }

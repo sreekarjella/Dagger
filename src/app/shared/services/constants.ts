@@ -42,6 +42,9 @@ export const LIST_MOVIES_PARAMETERS = {
 
 export const slideOptions = {
     slidesPerView: 3,
+    autoplay: {
+        delay: 2000,
+    },
     coverflowEffect: {
         rotate: 50,
         stretch: 0,

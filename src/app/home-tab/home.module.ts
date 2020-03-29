@@ -14,6 +14,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: HomePage }])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  entryComponents: [HomePage]
 })
 export class HomePageModule {}
