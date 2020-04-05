@@ -42,4 +42,11 @@ export class MockService {
     queryParameters = queryParameters.append('order_by', Constants.LIST_MOVIES_PARAMETERS.ORDER_BY.DESC);
     return this.httpClient.get<any>(environment.listOfMovies + '?', {params: queryParameters});
   }
+  public getListOfMoviesBySerachOperation(searchName: string) : Observable<any>{
+    let queryParameters = new HttpParams();
+    queryParameters = queryParameters.append('query_term', searchName);
+    return this.httpClient.get<any>(environment.listOfMovies + '?', {params: queryParameters});
+
+
+  }
 }

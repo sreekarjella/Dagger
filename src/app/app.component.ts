@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
 import { Capacitor, Plugins } from '@capacitor/core';
+import { SearchPage } from './search-tab/search.page';
+
+import { TabsPageModule } from './tabs/tabs.module';
 
 @Component({
   selector: 'app-root',
