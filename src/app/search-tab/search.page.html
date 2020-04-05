@@ -1,12 +1,12 @@
 <ion-content fullscreen>
-  <ion-searchbar animated="false" placeholder="Search movies/actors/directors/IMDB Code"
-    (keypress)="searchMovie($event)"></ion-searchbar>
-  <ion-text class="ion-padding" *ngIf="flag">
-    <h4 style="text-align: center;color:red;">Sorry! No product Found</h4>
-  </ion-text>
-  <ion-text class="ion-padding" *ngIf="show">
-    <h4>Movies</h4>
-  </ion-text>
+  <ion-searchbar animated="false" placeholder="Search"
+    (keypress)="searchMovie($event)">
+  </ion-searchbar>
+  <ng-container *ngIf="dataLoaded === true && data.length === 0">
+    <ion-text color="danger" class="ion-padding ion-text-center">
+      <h4>Sorry! No product Found</h4>
+    </ion-text>
+  </ng-container>
 
   <ion-card *ngFor="let movie of data">
     <ion-card-header>

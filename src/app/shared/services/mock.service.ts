@@ -42,11 +42,11 @@ export class MockService {
     queryParameters = queryParameters.append('order_by', Constants.LIST_MOVIES_PARAMETERS.ORDER_BY.DESC);
     return this.httpClient.get<any>(environment.listOfMovies + '?', { params: queryParameters });
   }
-  public getListOfMoviesBySerachOperation(searchName: string): Observable<any> {
+  public getListOfMoviesBySerachOperation(searchName: string): Observable<Response> {
     let queryParameters = new HttpParams();
     queryParameters = queryParameters.append('sort_by', Constants.LIST_MOVIES_PARAMETERS.SORT_BY.DOWNLOAD_COUNT);
     queryParameters = queryParameters.append('limit', '15');
     queryParameters = queryParameters.append('query_term', searchName);
-    return this.httpClient.get<any>(environment.listOfMovies + '?', { params: queryParameters });
+    return this.httpClient.get<Response>(environment.listOfMovies + '?', { params: queryParameters });
   }
 }
