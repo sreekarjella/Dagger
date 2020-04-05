@@ -25,6 +25,8 @@ export class SearchPage implements OnInit {
           this.data = [];
         }
       });
+    } else {
+      this.data = [];
     }
     this.dataLoaded = true;
   }
