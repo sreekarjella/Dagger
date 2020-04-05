@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['search.page.scss']
 })
 export class SearchPage implements OnInit {
-  private data: Movies[] = [];
+  data: Movies[] = [];
   dataLoaded = false;
   constructor(private mockService: MockService) { }
   ngOnInit(): void {

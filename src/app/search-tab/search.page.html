@@ -1,22 +1,16 @@
 <ion-content fullscreen>
-  <ion-searchbar animated="false" placeholder="Search"
-    (keypress)="searchMovie($event)">
+  <ion-searchbar animated="false" placeholder="Search" (keypress)="searchMovie($event)">
   </ion-searchbar>
   <ng-container *ngIf="dataLoaded === true && data.length === 0">
     <ion-text color="danger" class="ion-padding ion-text-center">
-      <h4>Sorry! No product Found</h4>
+      <h4>Sorry! No movies Found</h4>
     </ion-text>
   </ng-container>
 
-  <ion-card *ngFor="let movie of data">
-    <ion-card-header>
-      <ion-card-title>{{movie.title}}</ion-card-title>
-    </ion-card-header>
+  <ng-container *ngIf="dataLoaded === true && data.length !== 0">
+    <app-movie-cover [movies]="data"></app-movie-cover>
+  </ng-container>
+  
 
-    <ion-card-content>
-      <ion-img class="slide-content-image" [alt]="movie.title_english" [src]="movie.large_cover_image"></ion-img>
-      {{movie.summary}}
-    </ion-card-content>
-  </ion-card>
 
 </ion-content>
