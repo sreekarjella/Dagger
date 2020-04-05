@@ -1,19 +1,21 @@
 <ion-content fullscreen>
-    <!-- <ion-toolbar> -->
-      <ion-searchbar animated="false" placeholder="Search movies/actors/directors/IMDB Code" (keypress)="searchMovie($event)"></ion-searchbar>
-    <!-- </ion-toolbar> -->
-    <ion-text class="ion-padding" *ngIf="flag"  ><h4 style="text-align: center;color:red;">Sorry! No product Found</h4></ion-text>
-    <ion-text class="ion-padding" *ngIf="show"><h4>Movies</h4></ion-text>
-  
+  <ion-searchbar animated="false" placeholder="Search movies/actors/directors/IMDB Code"
+    (keypress)="searchMovie($event)"></ion-searchbar>
+  <ion-text class="ion-padding" *ngIf="flag">
+    <h4 style="text-align: center;color:red;">Sorry! No product Found</h4>
+  </ion-text>
+  <ion-text class="ion-padding" *ngIf="show">
+    <h4>Movies</h4>
+  </ion-text>
+
   <ion-card *ngFor="let movie of data">
     <ion-card-header>
-      <ion-card-subtitle>Movie</ion-card-subtitle>
       <ion-card-title>{{movie.title}}</ion-card-title>
     </ion-card-header>
-  
+
     <ion-card-content>
       <ion-img class="slide-content-image" [alt]="movie.title_english" [src]="movie.large_cover_image"></ion-img>
-     {{movie.summary}}
+      {{movie.summary}}
     </ion-card-content>
   </ion-card>
 

@@ -1,5 +1,4 @@
 <ion-content fullscreen>
-  <ion-text class="ion-padding"><h4>Title</h4></ion-text>
   <ion-slides pager="true" [options]="bannerSlideOpts">
     <ion-slide *ngFor="let movie of moviesByDate" (click)="showMovieDetails(movie)">
       <ion-img class="slide-content-image" [alt]="movie.title_english" [src]="movie.large_cover_image"></ion-img>

@@ -6,7 +6,6 @@ export const environment = {
   production: false,
   listOfMovies: `https://yts.mx/api/v2/list_movies.json`,
   movieDetails: `https://yts.mx/api/v2/movie_details.json`,
-  
 };
 
 /*
