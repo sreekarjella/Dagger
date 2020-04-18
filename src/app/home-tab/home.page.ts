@@ -22,13 +22,11 @@ export class HomePage implements OnInit {
 
   constructor(
     private mockService: MockService,
-    private loadingController: LoadingController,
     private modalController: ModalController,
     private routerOutlet: IonRouterOutlet
   ) {
   }
   ngOnInit() {
-    // this.presentLoadingController();
     this.bannerSlideOpts = Constants.bannerSlideOptions;
     this.movieCatalogSlideOption = Constants.movieCatalogSLideOptions;
     this.getLatestMoviesByDate();
@@ -59,27 +57,19 @@ export class HomePage implements OnInit {
     this.mockService.getTopRatedMovies().subscribe(
       (response) => {
         this.topRatedMovies = response.data.movies;
-        // this.loadingController.dismiss();
       }
     );
   }
 
-  showMovieDetails(movie: Movies) {
-    this.presentModal(movie);
+  showMovieDetails(movieId: number) {
+    this.presentModal(movieId);
   }
 
-  async  presentLoadingController() {
-    const loading = await this.loadingController.create({
-      message: 'Loading...'
-    });
-    await loading.present();
-  }
-
-  async presentModal(movie: Movies) {
+  async presentModal(movieId: number) {
     const modal = await this.modalController.create({
       component: MovieDetailsComponent,
       componentProps: {
-        movieData: movie
+        id: movieId
       },
       swipeToClose: true,
       presentingElement: this.routerOutlet.parentOutlet.nativeEl,

@@ -49,4 +49,12 @@ export class MockService {
     queryParameters = queryParameters.append('query_term', searchName);
     return this.httpClient.get<Response>(environment.listOfMovies + '?', { params: queryParameters });
   }
+
+  public getMovieById(movieId: number): Observable<any> {
+    let queryParameters = new HttpParams();
+    queryParameters = queryParameters.append('movie_id', movieId as unknown as string);
+    queryParameters = queryParameters.append('with_images', 'true');
+    queryParameters = queryParameters.append('with_cast', true as unknown as string);
+    return this.httpClient.get<any>(environment.movieDetails + '?', {params: queryParameters});
+  }
 }

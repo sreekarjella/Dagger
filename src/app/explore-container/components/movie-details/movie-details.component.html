@@ -1,0 +1,54 @@
+<ion-content>
+    <ng-container>
+        <ion-spinner class="spinner-center" color="tertiary" name="circles" *ngIf="!movieData"></ion-spinner>
+    </ng-container>
+
+    <ion-grid *ngIf="movieData">
+        <ion-row>
+            <ion-col size="12" size-md>
+                <ion-img [alt]="movieData.title_long" [src]="movieData.large_cover_image"></ion-img>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12" size-md>
+                <ion-text>
+                    <h2>{{movieData.title_long}}</h2>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="no-top-padding" size="2" size-md>
+                <ion-img src="../../../../assets/icon/imdb.svg"></ion-img>
+            </ion-col>
+            <ion-col class="ion-text-center" size="3" size-md>
+                <ion-text>{{movieData.rating}}/10
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12" size-md>
+                <ng-container *ngFor="let genere of movieData.genres; let index  = index">
+                    <ion-text>{{genere}}&nbsp;</ion-text>
+                    <ng-container *ngIf="index !== movieData.genres.length - 1">
+                        <ion-text>/&nbsp;</ion-text>
+                    </ng-container>
+                </ng-container>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12" size-md>
+                <ng-container class="icon-vertical-alignment">
+                    <ion-icon name="time"></ion-icon>
+                </ng-container>
+                <ion-text>&nbsp;{{movieData.runtime}} min</ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12" size-md>
+                <ion-text>{{movieData.description_full}}</ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-button (click)="dismissModal()">Goback</ion-button>

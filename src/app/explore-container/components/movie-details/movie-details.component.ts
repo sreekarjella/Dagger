@@ -1,3 +1,4 @@
+import { MockService } from '@shared/services/mock.service';
 import { Movies } from './../../../shared/model/Movies';
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
@@ -9,13 +10,20 @@ import { ModalController } from '@ionic/angular';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  @Input() movieData: Movies;
+  @Input() id: number;
+  movieData: Movies;
 
   constructor(
-    private modalController: ModalController
+    private modalController: ModalController,
+    private mockService: MockService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.mockService.getMovieById(this.id).subscribe((response) => {
+      this.movieData = response.data.movie;
+      console.log(this.movieData);
+    });
+  }
 
   dismissModal() {
     this.modalController.dismiss();
