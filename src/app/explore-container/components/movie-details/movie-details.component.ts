@@ -13,6 +13,7 @@ export class MovieDetailsComponent implements OnInit {
 
   @Input() id: number;
   movieData: Movies;
+  suggestedMovies: Movies[] = [];
   castSlideOption: any;
 
   constructor(
@@ -25,6 +26,10 @@ export class MovieDetailsComponent implements OnInit {
     this.mockService.getMovieById(this.id).subscribe((response) => {
       this.movieData = response.data.movie;
       console.log(this.movieData);
+    });
+    this.mockService.getMoviesSuggestions(this.id).subscribe((response) => {
+      this.suggestedMovies = response.data.movies;
+      console.log(this.suggestedMovies);
     });
   }
 

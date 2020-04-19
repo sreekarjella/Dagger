@@ -11,16 +11,16 @@ import { MockService } from '@shared/services/mock.service';
 export class SearchPage implements OnInit {
   data: Movies[] = [];
   dataLoaded = false;
-loading=true;
+  searchValue = '';
   constructor(private mockService: MockService) { }
 
   ngOnInit(): void {
   }
- 
+
   searchMovie(event: any) {
-   
+    this.searchValue = event.target.value;
     if (event.target.value.length !== 0) {
-      this.mockService.getListOfMoviesBySerachOperation(event.target.value).subscribe((resp: Response) => {
+      this.mockService.getListOfMoviesBySerachOperation(this.searchValue).subscribe((resp: Response) => {
         if (resp.data.movies.length !== 0) {
           this.data = resp.data.movies;
         } else {
