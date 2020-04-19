@@ -41,16 +41,22 @@ export const LIST_MOVIES_PARAMETERS = {
 };
 
 export const bannerSlideOptions = {
+    preloadImages: false,
+    lazy: {
+        loadPrevNext: true,
+        loadPrevNextAmount: 2
+    },
     slidesPerView: 3,
     autoplay: {
-        delay: 2000,
+        delay: 1500,
+        disableOnInteraction: false
     },
     coverflowEffect: {
         rotate: 50,
         stretch: 0,
         depth: 100,
         modifier: 1,
-        slideShadows: true,
+        slideShadows: false,
     },
     on: {
         beforeInit() {
@@ -141,4 +147,14 @@ export const movieCatalogSLideOptions = {
     slidesPerView: 3,
     spaceBetween: 50,
     centeredSlides: false,
+    freeMode: true
+};
+
+export const castCatalogSLideOptions = {
+    initialSlide: 0,
+    speed: 400,
+    slidesPerView: 3,
+    spaceBetween: 20,
+    centeredSlides: false,
+    freeMode: true
 };

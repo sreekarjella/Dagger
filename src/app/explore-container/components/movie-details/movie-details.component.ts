@@ -2,6 +2,7 @@ import { MockService } from '@shared/services/mock.service';
 import { Movies } from './../../../shared/model/Movies';
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import * as Constants from '@shared/services/constants';
 
 @Component({
   selector: 'app-movie-details',
@@ -12,6 +13,7 @@ export class MovieDetailsComponent implements OnInit {
 
   @Input() id: number;
   movieData: Movies;
+  castSlideOption: any;
 
   constructor(
     private modalController: ModalController,
@@ -19,6 +21,7 @@ export class MovieDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.castSlideOption = Constants.castCatalogSLideOptions;
     this.mockService.getMovieById(this.id).subscribe((response) => {
       this.movieData = response.data.movie;
       console.log(this.movieData);

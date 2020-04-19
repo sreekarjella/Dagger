@@ -1,3 +1,4 @@
+import { Cast } from './Cast';
 import { Torrents } from './Torrents';
 
 export interface Movies {
@@ -23,6 +24,7 @@ export interface Movies {
     small_cover_image: string;
     medium_cover_image: string;
     large_cover_image: string;
+    cast: Cast[];
     state: string;
     torrents: Torrents [];
     date_uploaded: string;
