@@ -2,18 +2,18 @@
 
   <ion-searchbar animated="false" placeholder="Search" (keyup)="searchMovie($event)">
   </ion-searchbar>
-  <ng-container *ngIf="dataLoaded === false ">
+  <ng-container *ngIf="data.length === 0 && searchValue.length === 0">
     <ion-text color="info" class="ion-padding ion-text-center">
       <h4>Search Movie by Title/IMDb Code, Actor Name/IMDb Code, Director Name/IMDb Code </h4>
     </ion-text>
   </ng-container>
-  <ng-container *ngIf="dataLoaded === true && data.length === 0">
+  <ng-container *ngIf="dataLoaded && data.length === 0 && searchValue.length !== 0">
     <ion-text color="danger" class="ion-padding ion-text-center">
-      <h4>Sorry! No movies Found</h4>
+      <h4>Sorry! No movies found</h4>
     </ion-text>
   </ng-container>
 
-  <ng-container *ngIf="dataLoaded === true && data.length !== 0" onload="onload()">
+  <ng-container *ngIf="dataLoaded && data.length !== 0" onload="onload()">
     <app-movie-cover [movies]="data"></app-movie-cover>
   </ng-container>
 

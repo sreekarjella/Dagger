@@ -19,8 +19,6 @@ export class HomePage implements OnInit {
   bannerSlideOpts: any;
   movieCatalogSlideOption: any;
 
-
-
   constructor(
     private mockService: MockService,
     private modalController: ModalController,
@@ -33,11 +31,9 @@ export class HomePage implements OnInit {
     this.getLatestMoviesByDate();
     this.getMostViewedMovies();
     this.getTopRatedMovies();
- 
   }
   
 
-  
   getLatestMoviesByDate() {
     this.mockService.getLatestMoviesByDate().subscribe(
       (response) => {

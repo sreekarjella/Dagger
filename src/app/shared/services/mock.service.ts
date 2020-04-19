@@ -57,4 +57,10 @@ export class MockService {
     queryParameters = queryParameters.append('with_cast', true as unknown as string);
     return this.httpClient.get<any>(environment.movieDetails + '?', {params: queryParameters});
   }
+
+  public getMoviesSuggestions(movieId: number): Observable<any> {
+    let queryParameters = new HttpParams();
+    queryParameters = queryParameters.append('movie_id', movieId as unknown as string);
+    return this.httpClient.get<any>(environment.movieSuggestions + '?', {params: queryParameters});
+  }
 }
