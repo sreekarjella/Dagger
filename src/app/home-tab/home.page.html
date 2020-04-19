@@ -23,7 +23,8 @@
         <ion-col size="12" size-md>
           <ion-slides [options]="movieCatalogSlideOption">
             <ion-slide *ngFor="let movie of mostViewedMovies">
-              <ion-img [alt]="movie.title_english" [src]="movie.large_cover_image"></ion-img>
+              <ion-img [alt]="movie.title_english" [src]="movie.large_cover_image" (click)="showMovieDetails(movie.id)">
+              </ion-img>
             </ion-slide>
           </ion-slides>
         </ion-col>
@@ -39,7 +40,8 @@
         <ion-col size="12" size-md>
           <ion-slides [options]="movieCatalogSlideOption">
             <ion-slide *ngFor="let movie of topRatedMovies">
-              <ion-img [alt]="movie.title_english" [src]="movie.large_cover_image"></ion-img>
+              <ion-img [alt]="movie.title_english" [src]="movie.large_cover_image" (click)="showMovieDetails(movie.id)">
+              </ion-img>
             </ion-slide>
           </ion-slides>
         </ion-col>

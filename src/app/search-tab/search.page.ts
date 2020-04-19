@@ -2,7 +2,6 @@ import { Response } from './../shared/model/Response';
 import { Movies } from './../shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
 import { MockService } from '@shared/services/mock.service';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-page',
@@ -14,6 +13,7 @@ export class SearchPage implements OnInit {
   dataLoaded = false;
 loading=true;
   constructor(private mockService: MockService) { }
+
   ngOnInit(): void {
   }
  
