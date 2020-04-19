@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { MostviewedComponent } from '../explore-container/components/mostviewed/mostviewed.component';
+import { TabComponent } from '../components/tab/tab.component';
+
 
 const routes: Routes = [
   {
-    path: 'tabs',
-    component: TabsPage,
-    children: [
-      {
+    
+   
+    
         path: 'HomeTab',
         children: [
           {
@@ -29,16 +31,21 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/HomeTab',
+        redirectTo: '/HomeTab',
         pathMatch: 'full'
       }
-    ]
+    
+  ,
+  {
+    path:'mostviewed',
+    component: MostviewedComponent,
+  
   },
   {
     path: '',
-    redirectTo: '/tabs/HomeTab',
+    redirectTo: '/HomeTab',
     pathMatch: 'full'
-  }
+  },
 ];
 
 @NgModule({

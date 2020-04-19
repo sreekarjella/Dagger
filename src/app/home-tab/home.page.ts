@@ -19,7 +19,7 @@ export class HomePage implements OnInit {
   bannerSlideOpts: any;
   movieCatalogSlideOption: any;
 
-loading=true;
+
 
   constructor(
     private mockService: MockService,
@@ -33,11 +33,9 @@ loading=true;
     this.getLatestMoviesByDate();
     this.getMostViewedMovies();
     this.getTopRatedMovies();
-   
+ 
   }
-  ngAfterContentChecked() {
-    this.loading=false;
-  }
+  
 
   
   getLatestMoviesByDate() {
@@ -45,6 +43,7 @@ loading=true;
       (response) => {
         if (response.status.match('ok')) {
           this.moviesByDate = response.data.movies;
+         
         }
       }
     );
