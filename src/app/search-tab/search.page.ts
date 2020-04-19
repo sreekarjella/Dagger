@@ -12,11 +12,13 @@ import { map } from 'rxjs/operators';
 export class SearchPage implements OnInit {
   data: Movies[] = [];
   dataLoaded = false;
+loading=true;
   constructor(private mockService: MockService) { }
   ngOnInit(): void {
   }
-
+ 
   searchMovie(event: any) {
+   
     if (event.target.value.length !== 0) {
       this.mockService.getListOfMoviesBySerachOperation(event.target.value).subscribe((resp: Response) => {
         if (resp.data.movies.length !== 0) {
