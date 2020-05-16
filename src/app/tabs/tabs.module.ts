@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
-import { MostviewedComponent } from '../explore-container/components/mostviewed/mostviewed.component';
+import { MostViewedComponent } from '../explore-container/components/most-viewed/most-viewed.component';
 import { TabComponent } from '../components/tab/tab.component';
 
 @NgModule({

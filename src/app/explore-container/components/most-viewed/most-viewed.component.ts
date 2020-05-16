@@ -3,18 +3,15 @@ import { Movies } from '@shared/model/Movies';
 import { IonRouterOutlet } from '@ionic/angular';
 
 @Component({
-  selector: 'app-mostviewed',
-  templateUrl: './mostviewed.component.html',
-  styleUrls: ['./mostviewed.component.scss'],
+  selector: 'app-mostViewed',
+  templateUrl: './most-viewed.component.html',
+  styleUrls: ['./most-viewed.component.scss'],
 })
-export class MostviewedComponent implements OnInit {
+export class MostViewedComponent implements OnInit {
   mostViewedMovies: Movies[] = [];
   constructor(private routerOutlet: IonRouterOutlet) { }
 
   ngOnInit() {
-//console.log(this.routerOutlet.getContext());
-
-   
   }
 
 }

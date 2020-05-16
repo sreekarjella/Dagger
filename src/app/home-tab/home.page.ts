@@ -32,14 +32,12 @@ export class HomePage implements OnInit {
     this.getMostViewedMovies();
     this.getTopRatedMovies();
   }
-  
 
   getLatestMoviesByDate() {
     this.mockService.getLatestMoviesByDate().subscribe(
       (response) => {
         if (response.status.match('ok')) {
           this.moviesByDate = response.data.movies;
-         
         }
       }
     );

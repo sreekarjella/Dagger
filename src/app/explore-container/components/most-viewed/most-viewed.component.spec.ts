@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { MostviewedComponent } from './mostviewed.component';
+import { MostViewedComponent } from './most-viewed.component';
 
-describe('MostviewedComponent', () => {
-  let component: MostviewedComponent;
-  let fixture: ComponentFixture<MostviewedComponent>;
+describe('MostViewedComponent', () => {
+  let component: MostViewedComponent;
+  let fixture: ComponentFixture<MostViewedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MostviewedComponent ],
+      declarations: [ MostViewedComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MostviewedComponent);
+    fixture = TestBed.createComponent(MostViewedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

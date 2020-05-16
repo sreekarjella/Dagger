@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
-import { MostviewedComponent } from '../explore-container/components/mostviewed/mostviewed.component';
-import { TabComponent } from '../components/tab/tab.component';
 
 
 const routes: Routes = [

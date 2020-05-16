@@ -10,9 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MostviewedComponent } from './explore-container/components/mostviewed/mostviewed.component';
-import { TabsPageModule } from './tabs/tabs.module';
-import { TabComponent } from './components/tab/tab.component';
 
 
 @NgModule({
