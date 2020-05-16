@@ -9,6 +9,8 @@ export class TabsPage {
 
   constructor() {}
 
-
+  tabChanged(){
+    console.log('changed');
+  }
 
 }

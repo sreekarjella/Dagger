@@ -16,7 +16,7 @@ import { TabComponent } from './components/tab/tab.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent,TabComponent],
+  declarations: [AppComponent, HeaderComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [

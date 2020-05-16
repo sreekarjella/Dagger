@@ -48,7 +48,7 @@ export const bannerSlideOptions = {
     },
     slidesPerView: 3,
     autoplay: {
-        delay: 1500,
+        delay: 1750,
         disableOnInteraction: false
     },
     coverflowEffect: {
@@ -145,7 +145,7 @@ export const movieCatalogSLideOptions = {
     initialSlide: 0,
     speed: 400,
     slidesPerView: 3,
-    spaceBetween: 50,
+    spaceBetween: 10,
     centeredSlides: false,
     freeMode: true
 };

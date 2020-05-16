@@ -7,9 +7,10 @@ import { TabComponent } from '../components/tab/tab.component';
 
 const routes: Routes = [
   {
-    
-   
-    
+    path: 'tabs',
+    component: TabsPage,
+    children: [
+      {
         path: 'HomeTab',
         children: [
           {
@@ -31,21 +32,16 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/HomeTab',
+        redirectTo: '/tabs/HomeTab',
         pathMatch: 'full'
       }
-    
-  ,
-  {
-    path:'mostviewed',
-    component: MostviewedComponent,
-  
+    ]
   },
   {
     path: '',
-    redirectTo: '/HomeTab',
+    redirectTo: '/tabs/HomeTab',
     pathMatch: 'full'
-  },
+  }
 ];
 
 @NgModule({

@@ -14,10 +14,8 @@ import { TabComponent } from '../components/tab/tab.component';
     IonicModule,
     CommonModule,
     FormsModule,
-    TabsPageRoutingModule,
-    
-   
+    TabsPageRoutingModule
   ],
-  declarations: [ MostviewedComponent]
+  declarations: [TabsPage]
 })
 export class TabsPageModule {}

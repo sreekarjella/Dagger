@@ -3,7 +3,7 @@
   <ion-searchbar animated="false" placeholder="Search" (keyup)="searchMovie($event)">
   </ion-searchbar>
   <ng-container *ngIf="data.length === 0 && searchValue.length === 0">
-    <ion-text color="info" class="ion-padding ion-text-center">
+    <ion-text class="ion-padding ion-text-center">
       <h4>Search Movie by Title/IMDb Code, Actor Name/IMDb Code, Director Name/IMDb Code </h4>
     </ion-text>
   </ng-container>

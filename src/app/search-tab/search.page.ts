@@ -20,7 +20,7 @@ export class SearchPage implements OnInit {
   searchMovie(event: any) {
     this.searchValue = event.target.value;
     if (event.target.value.length !== 0) {
-      this.mockService.getListOfMoviesBySerachOperation(this.searchValue).subscribe((resp: Response) => {
+      this.mockService.getListOfMoviesBySearchOperation(this.searchValue).subscribe((resp: Response) => {
         if (resp.data.movies.length !== 0) {
           this.data = resp.data.movies;
         } else {
