@@ -1,9 +1,10 @@
-import { Movies } from './../model/Movies';
+import { MoviesResponseMapper } from './../model/Mappers';
+import { Movies } from '@shared/model/Movies';
 import { Response } from './../model/Response';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import * as Constants from '@shared/services/constants';
 
@@ -23,8 +24,13 @@ export class MockService {
     return this.httpClient.get(environment.listOfMovies);
   }
 
-  public getLatestMoviesByDate(): Observable<Response> {
-    return this.httpClient.get<Response>(environment.listOfMovies + '?sort=' + Constants.LIST_MOVIES_PARAMETERS.SORT_BY.DATE_ADDED);
+  public getLatestMoviesByDate(): Observable<Movies[]> {
+    return this.httpClient.get<Response>(environment.listOfMovies + '?sort=' + Constants.LIST_MOVIES_PARAMETERS.SORT_BY.DATE_ADDED).pipe(
+      map((response: Response) => {
+        const data = new MoviesResponseMapper().map(response);
+        return data;
+      })
+    );
   }
 
   public getMostViewedMovies(): Observable<any> {

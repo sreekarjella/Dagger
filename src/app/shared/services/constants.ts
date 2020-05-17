@@ -141,7 +141,7 @@ export const bannerSlideOptions = {
     }
 };
 
-export const movieCatalogSLideOptions = {
+export const movieCatalogSlideOptions = {
     initialSlide: 0,
     speed: 400,
     slidesPerView: 3,
@@ -150,7 +150,7 @@ export const movieCatalogSLideOptions = {
     freeMode: true
 };
 
-export const castCatalogSLideOptions = {
+export const castCatalogSlideOptions = {
     initialSlide: 0,
     speed: 400,
     slidesPerView: 3,

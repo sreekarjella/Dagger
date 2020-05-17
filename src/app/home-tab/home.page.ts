@@ -1,10 +1,9 @@
-import { movieCatalogSLideOptions } from './../shared/services/constants';
+import { DetailedMovieService } from './../shared/services/detailed-movie.service';
 import { MockService } from './../shared/services/mock.service';
 import { Movies } from './../shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, ModalController, IonRouterOutlet } from '@ionic/angular';
 import * as Constants from '@shared/services/constants';
-import { MovieDetailsComponent } from '../explore-container/components/movie-details/movie-details.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -21,13 +20,13 @@ export class HomePage implements OnInit {
 
   constructor(
     private mockService: MockService,
-    private modalController: ModalController,
-    private routerOutlet: IonRouterOutlet
+    private router: Router,
+    private detailedMovieService: DetailedMovieService
   ) {
   }
   ngOnInit() {
     this.bannerSlideOpts = Constants.bannerSlideOptions;
-    this.movieCatalogSlideOption = Constants.movieCatalogSLideOptions;
+    this.movieCatalogSlideOption = Constants.movieCatalogSlideOptions;
     this.getLatestMoviesByDate();
     this.getMostViewedMovies();
     this.getTopRatedMovies();
@@ -36,9 +35,7 @@ export class HomePage implements OnInit {
   getLatestMoviesByDate() {
     this.mockService.getLatestMoviesByDate().subscribe(
       (response) => {
-        if (response.status.match('ok')) {
-          this.moviesByDate = response.data.movies;
-        }
+        this.moviesByDate = response;
       }
     );
   }
@@ -60,21 +57,8 @@ export class HomePage implements OnInit {
   }
 
   showMovieDetails(movieId: number) {
-    this.presentModal(movieId);
-  }
-
-  async presentModal(movieId: number) {
-    const modal = await this.modalController.create({
-      component: MovieDetailsComponent,
-      componentProps: {
-        id: movieId
-      },
-      swipeToClose: true,
-      presentingElement: this.routerOutlet.parentOutlet.nativeEl,
-      animated: true,
-      backdropDismiss: true
-    });
-    return await modal.present();
+    this.detailedMovieService.movieId = movieId;
+    this.router.navigateByUrl('/detailed-movie');
   }
 
 }

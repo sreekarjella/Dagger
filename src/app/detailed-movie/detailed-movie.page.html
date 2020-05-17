@@ -1,11 +1,17 @@
-<ion-content>
+<ion-header mode="ios">
     <ion-toolbar>
-        <ion-button fill="clear" (click)="dismissModal()">
-            <ion-icon name="chevron-back"></ion-icon>
-        </ion-button>
+        <ion-buttons fill="clear" (click)="goBack()">
+            <ion-button (click)="goBack()" role="button">
+                <ion-icon name="chevron-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
+</ion-header>
+
+<ion-content>
     <ng-container>
-        <ion-spinner class="spinner-center" color="tertiary" name="circles" *ngIf="!movieData && suggestedMovies.length == 0"></ion-spinner>
+        <ion-spinner class="spinner-center" color="tertiary" name="circles"
+            *ngIf="!movieData && suggestedMovies.length == 0"></ion-spinner>
     </ng-container>
 
     <ion-grid *ngIf="movieData && suggestedMovies.length !== 0">
@@ -53,9 +59,9 @@
                 Language:&nbsp;&nbsp;{{movieData.language}}
             </ion-col>
             <!-- <ion-col size="3" size-md>
-                <ion-text>{{movieData.language}}</ion-text>
-            </ion-col> -->
-            
+            <ion-text>{{movieData.language}}</ion-text>
+        </ion-col> -->
+
         </ion-row>
         <ion-row>
             <ion-col size="12" size-md>
@@ -78,8 +84,9 @@
         </ion-row>
         <ion-row>
             <ion-col size="12" size-md *ngFor="let torrent of movieData.torrents">
-                <ng-container >
-                    <ion-text class="capitalize-text vertical-text-align">{{torrent.quality}} {{torrent.type}} {{torrent.size}}</ion-text>
+                <ng-container>
+                    <ion-text class="capitalize-text vertical-text-align">{{torrent.quality}} {{torrent.type}}
+                        {{torrent.size}}</ion-text>
                 </ng-container>
                 <ion-button size="small" fill="clear" [href]="torrent.url">Download torrent
                 </ion-button>

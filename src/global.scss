@@ -25,14 +25,14 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-$header-marging: 50px;
+$header-margin: 50px;
 
 .toolbar-size {
-    height: $header-marging;
+    height: $header-margin;
 }
 
 .content-margin {
-    margin-top: $header-marging + 20px;
+    margin-top: $header-margin;
 }
 
 .spinner-center {

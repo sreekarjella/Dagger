@@ -3,7 +3,7 @@
     <ion-spinner class="spinner-center" color="tertiary" name="circles"></ion-spinner>
   </ng-container>
  
-  <ng-container *ngIf="moviesByDate && mostViewedMovies && topRatedMovies">
+  <div *ngIf="moviesByDate && mostViewedMovies && topRatedMovies" class="ion-margin-top">
     <ion-slides pager="true" [options]="bannerSlideOpts">
       <ion-slide *ngFor="let movie of moviesByDate">
         <ion-img class="slide-content-image" [alt]="movie.title_long" [src]="movie.large_cover_image"
@@ -47,7 +47,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ng-container>
+  </div>
 
 
 </ion-content>

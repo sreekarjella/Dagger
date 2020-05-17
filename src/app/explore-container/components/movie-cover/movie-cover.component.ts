@@ -1,7 +1,7 @@
+import { DetailedMovieService } from './../../../shared/services/detailed-movie.service';
 import { Movies } from './../../../shared/model/Movies';
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController, IonRouterOutlet } from '@ionic/angular';
-import { MovieDetailsComponent } from '../movie-details/movie-details.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-cover',
@@ -14,29 +14,17 @@ export class MovieCoverComponent implements OnInit {
   movies: Movies[];
 
   constructor(
-    private modalController: ModalController,
-    private routerOutlet: IonRouterOutlet
+    private router: Router,
+    private detailedMovieService: DetailedMovieService,
   ) { }
 
   ngOnInit() {
   }
 
-  async presentModal(movieId: number) {
-    const modal = await this.modalController.create({
-      component: MovieDetailsComponent,
-      componentProps: {
-        id: movieId
-      },
-      swipeToClose: true,
-      presentingElement: this.routerOutlet.parentOutlet.nativeEl,
-      animated: true,
-      backdropDismiss: true
-    });
-    return await modal.present();
-  }
 
   showMovieDetails(movieId: number) {
-    this.presentModal(movieId);
+    this.detailedMovieService.movieId = movieId;
+    this.router.navigateByUrl('/detailed-movie');
   }
 
 }
