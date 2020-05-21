@@ -1,17 +1,17 @@
 <ion-content fullscreen>
 
-  <ion-searchbar animated="false" placeholder="Search" (keyup)="searchMovie($event)">
+  <ion-searchbar placeholder="Search" (keyup)="searchMovie($event)" class="ion-padding-top">
   </ion-searchbar>
-  <ng-container *ngIf="data.length === 0 && searchValue.length === 0">
-    <ion-text class="ion-padding ion-text-center">
-      <h4>Search Movie by Title/IMDb Code, Actor Name/IMDb Code, Director Name/IMDb Code </h4>
+  <div *ngIf="data.length === 0 && searchValue.length === 0" class="ion-padding">
+    <ion-text class="ion-text-start">
+      <h4>Try searching for movies, actors, directors or with IMDB code</h4>
     </ion-text>
-  </ng-container>
-  <ng-container *ngIf="dataLoaded && data.length === 0 && searchValue.length !== 0">
-    <ion-text color="danger" class="ion-padding ion-text-center">
-      <h4>Sorry! No movies found</h4>
+  </div>
+  <div *ngIf="dataLoaded && data.length === 0 && searchValue.length !== 0" class="ion-padding">
+    <ion-text class="ion-text-start">
+      <h4>Sorry. We have not listed that down.</h4>
     </ion-text>
-  </ng-container>
+  </div>
 
   <ng-container *ngIf="dataLoaded && data.length !== 0" onload="onload()">
     <app-movie-cover [movies]="data"></app-movie-cover>

@@ -16,6 +16,7 @@ export class DetailedMoviePage implements OnInit {
   movieData: Movies;
   suggestedMovies: Movies[] = [];
   castSlideOption: any;
+  dataLoaded = false;
 
   constructor(
     private detailedMovieService: DetailedMovieService,
@@ -25,15 +26,16 @@ export class DetailedMoviePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.dataLoaded = false;
     this.movieId = this.detailedMovieService.movieId;
     if (this.movieId !== undefined) {
       this.mockService.getMovieById(this.movieId).subscribe((response) => {
         this.movieData = response.data.movie;
-        console.log(this.movieData);
+        this.dataLoaded = true;
       });
       this.mockService.getMoviesSuggestions(this.movieId).subscribe((response) => {
         this.suggestedMovies = response.data.movies;
-        console.log(this.suggestedMovies);
+        this.dataLoaded = true;
       });
     } else {
       this.router.navigateByUrl('/tabs/HomeTab');
@@ -43,6 +45,11 @@ export class DetailedMoviePage implements OnInit {
 
   goBack() {
     this.locationHistory.back();
+  }
+
+  suggestedMovieReload(id: number) {
+    this.detailedMovieService.movieId = id;
+    this.ngOnInit();
   }
 
 }
