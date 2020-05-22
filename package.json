@@ -1,8 +1,8 @@
 {
   "name": "dagger",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Sreekar Jella",
-  "homepage": "https://ionicframework.com/",
+  "homepage": "https://torrhub.netlify.app",
   "scripts": {
     "ng": "ng",
     "app-local": "ng serve --host 0.0.0.0 --disableHostCheck true",
