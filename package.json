@@ -1,10 +1,11 @@
 {
   "name": "dagger",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Sreekar Jella",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
+    "app-local": "ng serve --host 0.0.0.0 --disableHostCheck true",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
