@@ -1,7 +1,7 @@
 import { MockService } from '@shared/services/mock.service';
 import { Movies } from '@shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
-import { Location, LocationStrategy } from '@angular/common';
+import { LocationStrategy } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -30,12 +30,12 @@ export class DetailedMoviePage implements OnInit {
       this.movieId = +value.get('id');
     });
     if (this.movieId !== undefined) {
-      this.mockService.getMovieById(this.movieId).subscribe((response) => {
-        this.movieData = response.data.movie;
+      this.mockService.getMovieById(this.movieId).subscribe((response: Movies) => {
+        this.movieData = response;
         this.dataLoaded = true;
       });
-      this.mockService.getMoviesSuggestions(this.movieId).subscribe((response) => {
-        this.suggestedMovies = response.data.movies;
+      this.mockService.getMoviesSuggestions(this.movieId).subscribe((response: Movies[]) => {
+        this.suggestedMovies = response;
         this.dataLoaded = true;
       });
     } else {

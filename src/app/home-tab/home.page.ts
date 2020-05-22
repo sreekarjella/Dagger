@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
 
   getLatestMoviesByDate() {
     this.mockService.getLatestMoviesByDate().subscribe(
-      (response) => {
+      (response: Movies[]) => {
         this.moviesByDate = response;
       }
     );
@@ -40,16 +40,16 @@ export class HomePage implements OnInit {
 
   getMostViewedMovies() {
     this.mockService.getMostViewedMovies().subscribe(
-      (response) => {
-        this.mostViewedMovies = response.data.movies;
+      (response: Movies[]) => {
+        this.mostViewedMovies = response;
       }
     );
   }
 
   getTopRatedMovies() {
     this.mockService.getTopRatedMovies().subscribe(
-      (response) => {
-        this.topRatedMovies = response.data.movies;
+      (response: Movies[]) => {
+        this.topRatedMovies = response;
       }
     );
   }

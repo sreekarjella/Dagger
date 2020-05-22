@@ -12,3 +12,11 @@ export class MoviesResponseMapper {
         return response;
     }
 }
+
+export class MovieResponseMapper {
+    constructor() {
+    }
+    map(responseData): Movies {
+        return responseData.data.movie;
+    }
+}

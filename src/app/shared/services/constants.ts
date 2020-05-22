@@ -14,7 +14,7 @@ export const LIST_MOVIES_PARAMETERS = {
         MYSTERY: 'MYSTERY',
         CRIME: 'CRIME',
         ANIMATION: 'ANIMATION',
-        ADVENTURE: 'AVENTURE',
+        ADVENTURE: 'ADVENTURE',
         FANTASY: 'FANTASY',
         COMEDY_ROMANCE: 'COMEDY-ROMANCE',
         ACTION_COMEDY: 'ACTION-COMEDY',
@@ -32,7 +32,7 @@ export const LIST_MOVIES_PARAMETERS = {
     },
     ORDER_BY: {
         AESC: 'asc',
-        DESC: 'DESC'
+        DESC: 'desc'
     },
     WITH_RATINGS: {
         TRUE: 'true',
@@ -48,7 +48,7 @@ export const bannerSlideOptions = {
     },
     slidesPerView: 3,
     autoplay: {
-        delay: 1750,
+        delay: 2500,
         disableOnInteraction: false
     },
     coverflowEffect: {

@@ -4,7 +4,7 @@ import {
 } from '@angular/animations';
 
 
-// Routable animations
+// Route-able animations
 export const slideInAnimation =
     trigger('routeAnimation', [
         transition('* <=> *', [

@@ -4,12 +4,12 @@
   </ion-searchbar>
   <div *ngIf="data.length === 0 && searchValue.length === 0" class="ion-padding">
     <ion-text class="ion-text-start">
-      <h4>Try searching for movies, actors, directors or with IMDB code</h4>
+      <h6>Try searching for movies, actors, directors or with IMDB code</h6>
     </ion-text>
   </div>
   <div *ngIf="dataLoaded && data.length === 0 && searchValue.length !== 0" class="ion-padding">
     <ion-text class="ion-text-start">
-      <h4>Sorry. We have not listed that down.</h4>
+      <h6>Sorry. We have not listed that down.</h6>
     </ion-text>
   </div>
 
