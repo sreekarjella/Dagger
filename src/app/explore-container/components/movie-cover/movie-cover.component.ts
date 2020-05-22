@@ -1,4 +1,3 @@
-import { DetailedMovieService } from './../../../shared/services/detailed-movie.service';
 import { Movies } from './../../../shared/model/Movies';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
@@ -14,8 +13,7 @@ export class MovieCoverComponent implements OnInit {
   movies: Movies[];
 
   constructor(
-    private router: Router,
-    private detailedMovieService: DetailedMovieService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -23,8 +21,7 @@ export class MovieCoverComponent implements OnInit {
 
 
   showMovieDetails(movieId: number) {
-    this.detailedMovieService.movieId = movieId;
-    this.router.navigateByUrl('/detailed-movie');
+    this.router.navigate(['/detailed-movie', {id: movieId}]);
   }
 
 }

@@ -1,4 +1,3 @@
-import { DetailedMovieService } from './../shared/services/detailed-movie.service';
 import { MockService } from './../shared/services/mock.service';
 import { Movies } from './../shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
@@ -20,8 +19,7 @@ export class HomePage implements OnInit {
 
   constructor(
     private mockService: MockService,
-    private router: Router,
-    private detailedMovieService: DetailedMovieService
+    private router: Router
   ) {
   }
   ngOnInit() {
@@ -57,8 +55,7 @@ export class HomePage implements OnInit {
   }
 
   showMovieDetails(movieId: number) {
-    this.detailedMovieService.movieId = movieId;
-    this.router.navigateByUrl('/detailed-movie');
+    this.router.navigate(['/detailed-movie', {id: movieId}]);
   }
 
 }

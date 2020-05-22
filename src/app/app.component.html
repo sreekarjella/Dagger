@@ -1,9 +1,10 @@
 <ion-app>
-  <app-header></app-header> 
-  
+  <app-header></app-header>
+
   <div class="spinner-center">
     <ion-spinner color="tertiary" name="circles" *ngIf="routerLoading"></ion-spinner>
   </div>
-  <ion-router-outlet class="content-margin"></ion-router-outlet>
+  <ion-router-outlet class="content-margin" #routerOutlet="outlet" animated="true"></ion-router-outlet>
+
 
 </ion-app>

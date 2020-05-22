@@ -1,9 +1,8 @@
-import { DetailedMovieService } from './../shared/services/detailed-movie.service';
 import { MockService } from '@shared/services/mock.service';
 import { Movies } from '@shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Location, LocationStrategy } from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detailed-movie',
@@ -19,15 +18,17 @@ export class DetailedMoviePage implements OnInit {
   dataLoaded = false;
 
   constructor(
-    private detailedMovieService: DetailedMovieService,
     private mockService: MockService,
-    private locationHistory: Location,
-    private router: Router
+    private location: LocationStrategy,
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
     this.dataLoaded = false;
-    this.movieId = this.detailedMovieService.movieId;
+    this.route.paramMap.subscribe((value) => {
+      this.movieId = +value.get('id');
+    });
     if (this.movieId !== undefined) {
       this.mockService.getMovieById(this.movieId).subscribe((response) => {
         this.movieData = response.data.movie;
@@ -44,12 +45,11 @@ export class DetailedMoviePage implements OnInit {
   }
 
   goBack() {
-    this.locationHistory.back();
+    this.location.back();
   }
 
-  suggestedMovieReload(id: number) {
-    this.detailedMovieService.movieId = id;
-    this.ngOnInit();
+  suggestedMovieReload(movieId: number) {
+    this.router.navigate(['/detailed-movie', {id: movieId}]);
   }
 
 }
