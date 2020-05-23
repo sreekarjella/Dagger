@@ -16,6 +16,18 @@ export class MockService {
   constructor(private httpClient: HttpClient) {
   }
 
+  public getMoviesForTopPicks(): Observable<Movies[]> {
+    let queryParameters = new HttpParams();
+    queryParameters = queryParameters.append('sort_by', Constants.LIST_MOVIES_PARAMETERS.SORT_BY.DATE_ADDED);
+    queryParameters = queryParameters.append('limit', '200');
+    return this.httpClient.get<any>(environment.listOfMovies + '?', { params: queryParameters }).pipe(
+      map((response: Response) => {
+        const data = new MoviesResponseMapper().map(response);
+        return data;
+      })
+    );
+  }
+
   public getLatestMoviesByDate(): Observable<Movies[]> {
     return this.httpClient.get<Response>(environment.listOfMovies + '?sort=' + Constants.LIST_MOVIES_PARAMETERS.SORT_BY.DATE_ADDED).pipe(
       map((response: Response) => {

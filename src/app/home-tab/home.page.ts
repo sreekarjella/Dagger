@@ -3,6 +3,7 @@ import { Movies } from './../shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
 import * as Constants from '@shared/services/constants';
 import { Router } from '@angular/router';
+import { HomePageService } from '@shared/services/home-page.service';
 
 @Component({
   selector: 'app-home-page',
@@ -19,7 +20,8 @@ export class HomePage implements OnInit {
 
   constructor(
     private mockService: MockService,
-    private router: Router
+    private router: Router,
+    private homeService: HomePageService
   ) {
   }
   ngOnInit() {
@@ -31,7 +33,7 @@ export class HomePage implements OnInit {
   }
 
   getLatestMoviesByDate() {
-    this.mockService.getLatestMoviesByDate().subscribe(
+    this.homeService.topPicksContent().subscribe(
       (response: Movies[]) => {
         this.moviesByDate = response;
       }

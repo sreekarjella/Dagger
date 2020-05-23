@@ -52,4 +52,8 @@ export class DetailedMoviePage implements OnInit {
     this.router.navigate(['/detailed-movie', {id: movieId}]);
   }
 
+  updateCounter() {
+    console.log('Done');
+  }
+
 }

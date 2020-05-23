@@ -17,7 +17,7 @@
     <ion-grid *ngIf="dataLoaded && movieData && suggestedMovies.length !== 0">
         <ion-row>
             <ion-col size="12" size-md>
-                <ion-img [alt]="movieData.title_long" [src]="movieData.large_cover_image"></ion-img>
+                <ion-img [alt]="movieData.title_long" [src]="movieData.large_cover_image" (load)="updateCounter()"></ion-img>
             </ion-col>
         </ion-row>
         <ion-row>
