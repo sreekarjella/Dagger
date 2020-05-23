@@ -19,7 +19,7 @@ export class MockService {
   public getMoviesForTopPicks(): Observable<Movies[]> {
     let queryParameters = new HttpParams();
     queryParameters = queryParameters.append('sort_by', Constants.LIST_MOVIES_PARAMETERS.SORT_BY.DATE_ADDED);
-    queryParameters = queryParameters.append('limit', '200');
+    queryParameters = queryParameters.append('limit', '50');
     return this.httpClient.get<any>(environment.listOfMovies + '?', { params: queryParameters }).pipe(
       map((response: Response) => {
         const data = new MoviesResponseMapper().map(response);

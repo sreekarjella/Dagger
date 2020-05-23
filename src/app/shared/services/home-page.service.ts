@@ -14,19 +14,24 @@ export class HomePageService {
   topPicksContent(): Observable<Movies[]> {
     return this.mockService.getMoviesForTopPicks().pipe(
       map((movies: Movies[]) => {
-        const sortedMovies = this.sortMoviesBasedOnRating(movies);
+        const sortedMovies = this.sortMoviesForBestPicks(movies);
         return sortedMovies;
       })
     );
   }
 
-  private sortMoviesBasedOnRating(movies: Movies[]): Movies[] {
+  private sortMoviesForBestPicks(movies: Movies[]): Movies[] {
     const sortedMovies = movies.sort((a, b) => b.rating - a.rating);
     return this.pickTopRatedMovies(sortedMovies);
   }
 
   private pickTopRatedMovies(movies: Movies[]): Movies[] {
-    const bestPick = movies.slice(0, 14);
-    return bestPick;
+    const bestPick = movies.slice(0, 15);
+    return this.sortMoviesBasedOnDate(bestPick);
+  }
+
+  private sortMoviesBasedOnDate(movies: Movies[]): Movies[] {
+    const dateSortedMovies = movies.sort((a, b) => new Date(b.date_uploaded).getTime() - new Date(a.date_uploaded).getTime());
+    return dateSortedMovies;
   }
 }
