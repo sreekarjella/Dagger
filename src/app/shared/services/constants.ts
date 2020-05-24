@@ -40,6 +40,10 @@ export const LIST_MOVIES_PARAMETERS = {
     }
 };
 
+export const cacheKeys = {
+    bookmarks: 'bookmarks'
+};
+
 export const bannerSlideOptions = {
     preloadImages: false,
     lazy: {

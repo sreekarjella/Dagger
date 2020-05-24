@@ -21,25 +21,4 @@ export class ToastService {
     await toast.present();
   }
 
-
-  /**
-   * 
-   * @description ideal way for setting toastConfig, Use buttons if necessary
-   */
-  private _getToastConfig(message: any, position: string): any {
-    return {
-      message: message.text,
-      position,
-      color: 'success',
-      buttons: [
-        {
-          text: 'Ok',
-          handler: () => {
-            this.dismiss();
-          }
-        }
-      ]
-    };
-  }
-
 }

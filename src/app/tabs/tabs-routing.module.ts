@@ -29,6 +29,24 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'BookmarksTab',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../bookmarks-tab/bookmarks-tab.module').then(m => m.BookmarksTabPageModule)
+          }
+        ]
+      },
+      {
+        path: 'SettingsTab',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../settings-tab/settings-tab.module').then(m => m.SettingsTabPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/HomeTab',
         pathMatch: 'full'
@@ -46,4 +64,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

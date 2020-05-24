@@ -1,8 +1,12 @@
+import { BookmarkService } from './../shared/services/bookmark.service';
+import { ToastService } from './../shared/services/toast.service';
 import { MockService } from '@shared/services/mock.service';
 import { Movies } from '@shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
 import { LocationStrategy } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CacheService } from '@shared/services/cache.service';
+import * as Constants from '@shared/services/constants';
 
 @Component({
   selector: 'app-detailed-movie',
@@ -16,12 +20,15 @@ export class DetailedMoviePage implements OnInit {
   suggestedMovies: Movies[] = [];
   castSlideOption: any;
   dataLoaded = false;
+  loadingAnimation = '<ion-spinner></ion-spinner>';
+  bookmarkIcon = 'heart-outline';
 
   constructor(
     private mockService: MockService,
     private location: LocationStrategy,
     private router: Router,
     private route: ActivatedRoute,
+    private bookmarkService: BookmarkService
   ) { }
 
   ngOnInit() {
@@ -30,6 +37,7 @@ export class DetailedMoviePage implements OnInit {
       this.movieId = +value.get('id');
     });
     if (this.movieId !== undefined) {
+      this.bookmarkIcon = this.bookmarkService.isMovieBookMarked(this.movieId) ? 'heart' : 'heart-outline';
       this.mockService.getMovieById(this.movieId).subscribe((response: Movies) => {
         this.movieData = response;
         this.dataLoaded = true;
@@ -49,11 +57,23 @@ export class DetailedMoviePage implements OnInit {
   }
 
   suggestedMovieReload(movieId: number) {
-    this.router.navigate(['/detailed-movie', {id: movieId}]);
+    this.router.navigate(['/detailed-movie', { id: movieId }]);
   }
 
-  updateCounter() {
-    console.log('Done');
+  addOrRemoveBookmark() {
+    this.bookmarkIcon === 'heart-outline' ? this.bookmarkMovie() : this.removeMovieFromBookmarks();
+  }
+
+  removeMovieFromBookmarks() {
+    this.bookmarkService.removeMovieFromBookmarks(this.movieId, this.movieData).then(() =>{
+      this.bookmarkIcon = 'heart-outline';
+    });
+  }
+
+  bookmarkMovie() {
+    this.bookmarkService.bookmarkMovie(this.movieData).then(() => {
+      this.bookmarkIcon = 'heart';
+    });
   }
 
 }
