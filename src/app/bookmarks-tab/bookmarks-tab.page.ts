@@ -1,8 +1,6 @@
 import { BookmarkService } from './../shared/services/bookmark.service';
 import { Movies } from '@shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
-import { CacheService } from '@shared/services/cache.service';
-
 
 @Component({
   selector: 'app-bookmarks-tab',
@@ -13,7 +11,7 @@ export class BookmarksTabPage implements OnInit {
 
   constructor(
     private bookmarkService: BookmarkService
-    ) { }
+  ) { }
 
   cachedBookmarkMovies: Movies[] = [];
 
@@ -22,10 +20,12 @@ export class BookmarksTabPage implements OnInit {
   }
 
   refreshCachedMovies(event) {
-    this.bookmarkService.fetchAllBookmarkMovies().then((movies: Movies[]) => {
-      this.cachedBookmarkMovies = movies;
-      event.target.complete();
-    });
+    setTimeout(() => {
+      this.bookmarkService.fetchAllBookmarkMovies().then((movies: Movies[]) => {
+        this.cachedBookmarkMovies = movies;
+        event.target.complete();
+      });
+    }, 1000);
   }
 
 }

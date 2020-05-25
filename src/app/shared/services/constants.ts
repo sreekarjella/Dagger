@@ -41,7 +41,10 @@ export const LIST_MOVIES_PARAMETERS = {
 };
 
 export const cacheKeys = {
-    bookmarks: 'bookmarks'
+    bookmarks: 'bookmarks',
+    topPicks: 'topPicks',
+    mostViewed: 'mostViewed',
+    topRated: 'topRated'
 };
 
 export const bannerSlideOptions = {

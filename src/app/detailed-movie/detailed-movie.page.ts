@@ -1,12 +1,9 @@
 import { BookmarkService } from './../shared/services/bookmark.service';
-import { ToastService } from './../shared/services/toast.service';
 import { MockService } from '@shared/services/mock.service';
 import { Movies } from '@shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
 import { LocationStrategy } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CacheService } from '@shared/services/cache.service';
-import * as Constants from '@shared/services/constants';
 
 @Component({
   selector: 'app-detailed-movie',
@@ -65,7 +62,7 @@ export class DetailedMoviePage implements OnInit {
   }
 
   removeMovieFromBookmarks() {
-    this.bookmarkService.removeMovieFromBookmarks(this.movieId, this.movieData).then(() =>{
+    this.bookmarkService.removeMovieFromBookmarks(this.movieId, this.movieData).then(() => {
       this.bookmarkIcon = 'heart-outline';
     });
   }

@@ -46,7 +46,7 @@ export class BookmarkService {
 
   async bookmarkMovie(movie: Movies): Promise<void> {
     const data = await this.cacheService.getCacheData(Constants.cacheKeys.bookmarks);
-    data.value === null ? this.initialBookmark(movie) : this.addMovieToBookmarks(movie);
+    data.value === null ? this.initialBookmark(movie) : this.addMovieToBookmarks(movie, data.value);
     this.showToastMessage(`${movie.title} added to bookmarks`);
     return Promise.resolve();
   }
@@ -57,12 +57,10 @@ export class BookmarkService {
     this.cacheService.storeCacheObjectData(Constants.cacheKeys.bookmarks, bookmarkMovies);
   }
 
-  private addMovieToBookmarks(movie: Movies) {
-    this.cacheService.getCacheData(Constants.cacheKeys.bookmarks).then((data) => {
-      const cachedMoviesData: Movies[] = JSON.parse(data.value);
-      cachedMoviesData.push(movie);
-      this.cacheService.storeCacheObjectData(Constants.cacheKeys.bookmarks, cachedMoviesData);
-    });
+  private addMovieToBookmarks(movie: Movies, cachedMovies: string) {
+    const movies: Movies[] = JSON.parse(cachedMovies);
+    movies.push(movie);
+    this.cacheService.storeCacheObjectData(Constants.cacheKeys.bookmarks, movies);
   }
 
   private showToastMessage(msg: string) {
@@ -70,7 +68,7 @@ export class BookmarkService {
       color: 'dark',
       duration: 2000,
       message: msg,
-      position: 'top',
+      position: 'bottom',
       showCloseButton: false
     };
     this.toastService.showToast(toastConfig);
