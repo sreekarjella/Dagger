@@ -18,18 +18,13 @@ export class BookmarksTabPage implements OnInit {
   cachedBookmarkMovies: Movies[] = [];
 
   ngOnInit() {
-    this.onInitInitializations();
+    this.cachedBookmarkMovies = this.bookmarkService.bookmarkedMovies;
   }
 
   refreshCachedMovies(event) {
-    this.onInitInitializations().then(() => {
-      event.target.complete();
-    });
-  }
-
-  private async onInitInitializations(): Promise<void> {
-    await this.bookmarkService.fetchAllBookmarkMovies().then((movies: Movies[]) => {
+    this.bookmarkService.fetchAllBookmarkMovies().then((movies: Movies[]) => {
       this.cachedBookmarkMovies = movies;
+      event.target.complete();
     });
   }
 

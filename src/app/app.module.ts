@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 export function bookmarksAppInit(bookmarkService: BookmarkService) {
   return (): Promise<any> => {
     return bookmarkService.fetchAllBookmarkMovies();
-  }
+  };
 }
 
 
