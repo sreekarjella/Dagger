@@ -13,7 +13,7 @@
     </ion-text>
   </div>
 
-  <ng-container *ngIf="dataLoaded && data.length !== 0" onload="onload()">
+  <ng-container *ngIf="dataLoaded && data.length !== 0">
     <app-movie-cover [movies]="data"></app-movie-cover>
   </ng-container>
 

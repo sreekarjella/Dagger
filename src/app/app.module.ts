@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { BookmarkService } from './shared/services/bookmark.service';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -11,6 +12,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 
+export function bookmarksAppInit(bookmarkService: BookmarkService) {
+  return (): Promise<any> => {
+    return bookmarkService.fetchAllBookmarkMovies();
+  }
+}
+
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -19,7 +26,13 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: bookmarksAppInit,
+      deps: [BookmarkService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
