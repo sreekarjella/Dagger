@@ -55,7 +55,7 @@ export class HomePage implements OnInit {
   }
 
   showMovieDetails(movieId: number) {
-    this.router.navigate(['/detailed-movie', { id: movieId }]);
+    this.router.navigate(['tabs/detailed-movie', { id: movieId }]);
   }
 
   refreshHomeContent(event) {

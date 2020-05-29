@@ -22,7 +22,7 @@
     <ion-grid *ngIf="dataLoaded && movieData && suggestedMovies.length !== 0">
         <ion-row>
             <ion-col size="12" size-md>
-                <ion-img [alt]="movieData.title_long" [src]="(movieData.large_cover_image) || (loadingAnimation)"></ion-img>
+                <app-image-shell [src]="movieData.large_cover_image" [alt]="movieData.title_long"></app-image-shell>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -43,8 +43,8 @@
         </ion-row>
         <ion-row>
             <ion-col size="12" size-md>
-                <ng-container *ngFor="let genere of movieData.genres; let index  = index">
-                    <ion-text>{{genere}}&nbsp;</ion-text>
+                <ng-container *ngFor="let genre of movieData.genres; let index  = index">
+                    <ion-text>{{genre}}&nbsp;</ion-text>
                     <ng-container *ngIf="index !== movieData.genres.length - 1">
                         <ion-text>/&nbsp;</ion-text>
                     </ng-container>
@@ -138,8 +138,8 @@
             </ion-row>
             <ion-row>
                 <ion-col class="ion-padding" size="6" size-md *ngFor="let movie of suggestedMovies">
-                    <ion-img [alt]="movie.title_english" [src]="movie.medium_cover_image"
-                        (click)="suggestedMovieReload(movie.id)"></ion-img>
+                    <app-image-shell [src]="movie.medium_cover_image" [alt]="movie.title_english"
+                        (click)="suggestedMovieReload(movie.id)"></app-image-shell>
                 </ion-col>
             </ion-row>
         </ng-container>

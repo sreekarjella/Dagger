@@ -1,3 +1,4 @@
+import { ImageShellComponent } from './components/image-shell/image-shell.component';
 import { MovieCoverComponent } from './components/movie-cover/movie-cover.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,10 +12,12 @@ import { IonicModule } from '@ionic/angular';
     IonicModule
   ],
   declarations: [
-    MovieCoverComponent
+    MovieCoverComponent,
+    ImageShellComponent
   ],
   exports: [
-    MovieCoverComponent
+    MovieCoverComponent,
+    ImageShellComponent
   ],
   entryComponents: []
 })

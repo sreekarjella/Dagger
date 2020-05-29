@@ -17,7 +17,7 @@ export class DetailedMoviePage implements OnInit {
   suggestedMovies: Movies[] = [];
   castSlideOption: any;
   dataLoaded = false;
-  loadingAnimation = '<ion-spinner></ion-spinner>';
+  loadingAnimation = '../../assets/images/logo.png';
   bookmarkIcon = 'heart-outline';
 
   constructor(
@@ -54,7 +54,7 @@ export class DetailedMoviePage implements OnInit {
   }
 
   suggestedMovieReload(movieId: number) {
-    this.router.navigate(['/detailed-movie', { id: movieId }]);
+    this.router.navigate(['tabs/detailed-movie', { id: movieId }]);
   }
 
   addOrRemoveBookmark() {

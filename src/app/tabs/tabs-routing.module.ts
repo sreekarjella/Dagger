@@ -9,6 +9,15 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
+        path: 'detailed-movie',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../detailed-movie/detailed-movie.module').then( m => m.DetailedMoviePageModule)
+          }
+        ]
+      },
+      {
         path: 'HomeTab',
         children: [
           {
