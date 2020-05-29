@@ -98,4 +98,16 @@ export class HomePageService {
   private updateCache(key: string, movies: Movies[], cachedMovies: string) {
     this.cacheService.storeCacheObjectData(key, movies);
   }
+
+  latestMovies(pageNumber = 1): Observable<Movies[]> {
+    let queryParameters = new HttpParams();
+    queryParameters = queryParameters.append('sort_by', Constants.LIST_MOVIES_PARAMETERS.SORT_BY.DATE_ADDED);
+    queryParameters = queryParameters.append('limit', '20');
+    queryParameters = queryParameters.append('page', pageNumber as unknown as string);
+    return this.mockService.getMovies(queryParameters).pipe(
+      map((movies: Movies[]) => {
+        return movies;
+      })
+    );
+  }
 }

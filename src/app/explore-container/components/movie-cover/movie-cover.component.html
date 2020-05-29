@@ -1,7 +1,8 @@
 <ion-grid>
     <ion-row>
         <ion-col class="ion-padding" size="6" size-md *ngFor="let movie of movies">
-            <ion-img [alt]="movie.title_english" [src]="movie.medium_cover_image" (click)="showMovieDetails(movie.id)"></ion-img>
+            <app-image-shell [alt]="movie.title_english" [src]="movie.medium_cover_image" (click)="showMovieDetails(movie.id)"></app-image-shell>
+            <!-- <ion-img [alt]="movie.title_english" [src]="movie.medium_cover_image" (click)="showMovieDetails(movie.id)"></ion-img> -->
         </ion-col>
     </ion-row>
 </ion-grid>

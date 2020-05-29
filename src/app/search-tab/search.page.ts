@@ -1,3 +1,4 @@
+import { HomePageService } from '@shared/services/home-page.service';
 import { Movies } from './../shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
 import { MockService } from '@shared/services/mock.service';
@@ -11,9 +12,14 @@ export class SearchPage implements OnInit {
   data: Movies[] = [];
   dataLoaded = false;
   searchValue = '';
-  constructor(private mockService: MockService) { }
+  pageNumber = 1;
+  constructor(
+    private mockService: MockService,
+    private homePageService: HomePageService
+  ) { }
 
   ngOnInit(): void {
+    this.loadLatestMovies();
   }
 
   searchMovie(event: any) {
@@ -30,6 +36,25 @@ export class SearchPage implements OnInit {
       this.data = [];
     }
     this.dataLoaded = true;
+  }
+
+  loadLatestMovies(): Promise<void> {
+    this.homePageService.latestMovies(this.pageNumber).subscribe((movies: Movies[]) => {
+      movies.forEach((movie) => {
+        this.data.push(movie);
+      });
+      this.dataLoaded = true;
+    });
+    return Promise.resolve();
+  }
+
+  loadMovies(event) {
+    this.pageNumber += 1;
+    setTimeout(() => {
+      this.loadLatestMovies().then(() => {
+        event.target.complete();
+      });
+    }, 1000);
   }
 
 }

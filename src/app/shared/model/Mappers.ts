@@ -6,7 +6,7 @@ export class MoviesResponseMapper {
     }
     map(responseData: Response): Movies[] {
         const response: Movies[] = [];
-        if(responseData.data.movie_count < 1) {
+        if (responseData.data.movie_count < 1) {
             return [];
         }
         responseData.data.movies.forEach((movie) => {

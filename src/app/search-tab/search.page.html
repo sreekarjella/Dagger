@@ -4,12 +4,19 @@
   </ion-searchbar>
   <div *ngIf="dataLoaded && data.length === 0 && searchValue.length !== 0" class="ion-padding">
     <ion-text class="ion-text-start">
-      <h6>Sorry. We have not listed that down.</h6>
+      <h6>Sorry! We have not listed that down.</h6>
     </ion-text>
   </div>
 
   <ng-container *ngIf="dataLoaded && data.length !== 0">
     <app-movie-cover [movies]="data"></app-movie-cover>
   </ng-container>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMovies($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>
