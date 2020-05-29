@@ -1,12 +1,7 @@
 <ion-content fullscreen>
 
-  <ion-searchbar placeholder="Search" (keyup)="searchMovie($event)" class="ion-padding-top">
+  <ion-searchbar placeholder="Search movies" (keyup)="searchMovie($event)" class="ion-padding-top">
   </ion-searchbar>
-  <div *ngIf="data.length === 0 && searchValue.length === 0" class="ion-padding">
-    <ion-text class="ion-text-start">
-      <h6>Try searching for movies, actors, directors or with IMDB code</h6>
-    </ion-text>
-  </div>
   <div *ngIf="dataLoaded && data.length === 0 && searchValue.length !== 0" class="ion-padding">
     <ion-text class="ion-text-start">
       <h6>Sorry. We have not listed that down.</h6>
