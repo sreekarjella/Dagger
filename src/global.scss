@@ -35,6 +35,11 @@ $header-margin: 50px;
     margin-top: $header-margin;
 }
 
+
+.app-logo{
+    height: $header-margin;
+}
+
 .spinner-center {
     position: fixed;
     top: 50%;

@@ -7,7 +7,6 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookmarkService } from '@shared/services/bookmark.service';
 
@@ -20,12 +19,12 @@ export function bookmarksAppInit(bookmarkService: BookmarkService) {
 export function homeAppInit(homeService: HomePageService) {
   return (): Promise<any> => {
     return homeService.homeContentInitialization().toPromise();
-  }
+  };
 }
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [
@@ -47,4 +46,4 @@ export function homeAppInit(homeService: HomePageService) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
