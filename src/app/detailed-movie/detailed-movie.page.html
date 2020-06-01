@@ -67,13 +67,13 @@
         <ion-row>
             <ion-col size="12" size-md>
                 <ion-text>
-                    <h4>Available in</h4>
+                    <h4 class="no-bottom-margin">Available in</h4>
                 </ion-text>
             </ion-col>
         </ion-row>
         <ion-row>
             <ng-container *ngFor="let torrent of movieData.torrents">
-                <ion-col size="6" size-md>
+                <ion-col size="6" size-md class="ion-padding-start">
                     <ion-text class="capitalize-text vertical-text-align">{{torrent.quality}} {{torrent.type}}
                         {{torrent.size}}</ion-text>
                 </ion-col>
@@ -87,13 +87,13 @@
             <ion-row>
                 <ion-col size="12" size-md>
                     <ion-text>
-                        <h4>Synopsis</h4>
+                        <h4 class="no-bottom-margin">Synopsis</h4>
                     </ion-text>
                 </ion-col>
             </ion-row>
             <ion-row>
                 <ion-col size="12" size-md>
-                    <ion-text>{{movieData.description_full}}</ion-text>
+                    <ion-text>&nbsp;&nbsp;&nbsp;&nbsp;{{movieData.description_full}}</ion-text>
                 </ion-col>
             </ion-row>
         </ng-container>
@@ -101,7 +101,7 @@
             <ion-row>
                 <ion-col size="12" size-md>
                     <ion-text>
-                        <h4>Cast</h4>
+                        <h4 class="no-bottom-margin">Cast</h4>
                     </ion-text>
                 </ion-col>
             </ion-row>
@@ -132,7 +132,7 @@
             <ion-row>
                 <ion-col size="12" size-md>
                     <ion-text>
-                        <h4>You may also like</h4>
+                        <h4 class="no-bottom-margin">You may also like</h4>
                     </ion-text>
                 </ion-col>
             </ion-row>
@@ -145,4 +145,10 @@
         </ng-container>
 
     </ion-grid>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="addOrRemoveBookmark()" color="medium">
+            <ion-icon [name]="bookmarkIcon"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

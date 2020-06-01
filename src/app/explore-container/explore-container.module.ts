@@ -1,3 +1,4 @@
+import { ExpandableCardComponent } from './components/expandable-card/expandable-card.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ImageShellComponent } from './components/image-shell/image-shell.component';
 import { MovieCoverComponent } from './components/movie-cover/movie-cover.component';
@@ -15,12 +16,14 @@ import { IonicModule } from '@ionic/angular';
   declarations: [
     MovieCoverComponent,
     ImageShellComponent,
-    HeaderComponent
+    HeaderComponent,
+    ExpandableCardComponent
   ],
   exports: [
     MovieCoverComponent,
     ImageShellComponent,
-    HeaderComponent
+    HeaderComponent,
+    ExpandableCardComponent
   ],
   entryComponents: []
 })

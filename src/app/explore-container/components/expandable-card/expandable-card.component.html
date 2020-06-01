@@ -1,0 +1,9 @@
+<!-- <div class="card-container"> -->
+
+  <div class="card-body" (click)="toggleFold()" [@panelState]="folded">
+    <ng-content></ng-content>
+  </div>
+
+<!-- </div> -->
+
+<pre>{{ folded }}</pre>
