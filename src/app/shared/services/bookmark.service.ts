@@ -12,7 +12,7 @@ export class BookmarkService {
   constructor(
     private cacheService: CacheService,
     private toastService: ToastService
-    ) { }
+  ) { }
 
   bookmarkedMovies: Movies[] = [];
 
@@ -68,8 +68,14 @@ export class BookmarkService {
       color: 'dark',
       duration: 2000,
       message: msg,
-      position: 'bottom',
-      showCloseButton: false
+      position: 'top',
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Close',
+          role: 'cancel'
+        }
+      ]
     };
     this.toastService.showToast(toastConfig);
   }
