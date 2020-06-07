@@ -3,6 +3,7 @@ import { Movies } from '@shared/model/Movies';
 import { Injectable } from '@angular/core';
 import * as Constants from '@shared/services/constants';
 import { CacheService } from './cache.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class BookmarkService {
   ) { }
 
   bookmarkedMovies: Movies[] = [];
+  bookmarkedMovies$: BehaviorSubject<Movies[]> = new BehaviorSubject<Movies[]>(this.bookmarkedMovies);
 
   async fetchAllBookmarkMovies(): Promise<Movies[]> {
     const data = await this.cacheService.getCacheData(Constants.cacheKeys.bookmarks);
@@ -23,6 +25,7 @@ export class BookmarkService {
       return [];
     }
     this.bookmarkedMovies = cachedData;
+    this.updateBookmarkTab(cachedData);
     return Promise.resolve(this.bookmarkedMovies);
   }
 
@@ -40,6 +43,7 @@ export class BookmarkService {
       }
     }
     this.cacheService.storeCacheObjectData(Constants.cacheKeys.bookmarks, cachedMoviesData);
+    this.updateBookmarkTab(cachedMoviesData);
     this.showToastMessage(`${movie.title} removed from bookmarks`);
     return Promise.resolve();
   }
@@ -55,12 +59,19 @@ export class BookmarkService {
     const bookmarkMovies: Movies[] = [];
     bookmarkMovies.push(movie);
     this.cacheService.storeCacheObjectData(Constants.cacheKeys.bookmarks, bookmarkMovies);
+    this.updateBookmarkTab(bookmarkMovies);
   }
 
   private addMovieToBookmarks(movie: Movies, cachedMovies: string) {
     const movies: Movies[] = JSON.parse(cachedMovies);
     movies.push(movie);
     this.cacheService.storeCacheObjectData(Constants.cacheKeys.bookmarks, movies);
+    this.updateBookmarkTab(movies);
+  }
+
+  private updateBookmarkTab(movies: Movies[]) {
+    this.bookmarkedMovies = movies;
+    this.bookmarkedMovies$.next(this.bookmarkedMovies);
   }
 
   private showToastMessage(msg: string) {
