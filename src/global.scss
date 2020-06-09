@@ -25,6 +25,9 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+/* App utils */
+@import "./utils/utils";
+
 $header-margin: 50px;
 
 .toolbar-size {
@@ -55,22 +58,3 @@ ion-button {
     text-transform: none;
 }
 
-.no-top-padding {
-    padding-top: 0;
-}
-
-.no-bottom-padding {
-    padding-bottom: 0;
-}
-
-.no-bottom-margin {
-    margin-bottom: 0;
-}
-
-.capitalize-text {
-    text-transform: capitalize;
-}
-
-.vertical-text-align {
-    vertical-align: -webkit-baseline-middle;
-}
