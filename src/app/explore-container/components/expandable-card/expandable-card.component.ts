@@ -7,9 +7,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   styleUrls: ['./expandable-card.component.scss'],
   animations: [
     trigger('panelState', [
-      state('closed', style({ height: '32px', overflow: 'hidden' })),
+      state('closed', style({ height: '34px', overflow: 'hidden' })),
       state('open', style({ height: '*' })),
-      transition('closed <=> open', animate('300ms ease-in-out')),
+      transition('closed <=> open', animate('350ms ease-in-out')),
     ]),
   ],
 })
