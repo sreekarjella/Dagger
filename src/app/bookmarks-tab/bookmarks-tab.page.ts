@@ -17,6 +17,9 @@ export class BookmarksTabPage implements OnInit {
 
   ngOnInit() {
     this.cachedBookmarkMovies = this.bookmarkService.bookmarkedMovies;
+    this.bookmarkService.bookmarkedMovies$.subscribe((bookmarks: Movies[]) => {
+      this.cachedBookmarkMovies = bookmarks;
+    });
   }
 
   refreshCachedMovies(event) {

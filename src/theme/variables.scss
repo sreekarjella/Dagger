@@ -3,6 +3,8 @@
 
 /** Ionic CSS Variables **/
 :root {
+  --ion-font-family: 'Roboto', sans-serif;
+
   /** primary **/
   --ion-color-primary: #5260ff;
   --ion-color-primary-rgb: 82, 96, 255;
@@ -74,6 +76,9 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** app specific **/
+  --app-bookmark-icon: #ff5656;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -222,8 +227,5 @@
 
     --ion-item-background: #1A1B1E;
   }
-
-  ion-title.title-large {
-    --color: white;
-  }
+  
 }
