@@ -1,15 +1,15 @@
 1. Filter bar in search page with functionality.
 2. Theming.
-3. Dark mode switcher.          (https://commentedcoding.com/toggle-dark-mode-with-ionic-5/)
+3. Dark mode switcher.                      (https://commentedcoding.com/toggle-dark-mode-with-ionic-5/)
 4. Bookmarks live update from cache.		== Completed
 5. Logo branding.
 6. Lighthouse.
 7. More categories in home page.
 8. UI alignment in detailed movie page.
-9. Add font(Roboto) to app.			== Completed
-10. Use fab-button for bookmarking.		== Completed
-11. Try(Tap Synopsis to expand)			== Completed
-12. Try(Tap ion-toast to dismiss)		== Completed
+9. Add font(Roboto) to app.			        == Completed
+10. Use fab-button for bookmarking.		    == Completed
+11. Try(Tap Synopsis to expand)			    == Completed
+12. Try(Tap ion-toast to dismiss)		    == Completed
 13. Try(ViewCounter for web page)
 14. Header redesigning
 15. Exception Handling for api call's

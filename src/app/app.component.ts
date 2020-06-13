@@ -11,7 +11,7 @@ import { Capacitor, Plugins } from '@capacitor/core';
 export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
-    private router: Router
+    private router: Router,
   ) {
     this.initializeApp();
   }
@@ -24,10 +24,18 @@ export class AppComponent implements OnInit {
       if (Capacitor.isPluginAvailable('SplashScreen')) {
         Plugins.SplashScreen.hide();
       }
+      this.checkDarkMode();
     });
   }
 
   ngOnInit() {
+  }
+
+  checkDarkMode() {
+    const prefersColor = window.matchMedia('(prefers-color-scheme: dark)');
+    if (prefersColor.matches) {
+      document.body.classList.toggle('dark');
+    }
   }
 
   private initRoutingProgress() {
@@ -40,7 +48,7 @@ export class AppComponent implements OnInit {
         case event instanceof NavigationCancel:
         case event instanceof NavigationEnd:
         case event instanceof NavigationError: {
-          this.routerLoading =  true;
+          this.routerLoading = true;
           break;
         }
         default: break;
