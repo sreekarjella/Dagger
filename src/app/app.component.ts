@@ -1,3 +1,4 @@
+import { ThemeService } from './shared/services/theme.service';
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd, NavigationError, RouterOutlet } from '@angular/router';
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private router: Router,
+    private themeService: ThemeService
   ) {
     this.initializeApp();
   }
@@ -24,18 +26,11 @@ export class AppComponent implements OnInit {
       if (Capacitor.isPluginAvailable('SplashScreen')) {
         Plugins.SplashScreen.hide();
       }
-      this.checkDarkMode();
+      this.themeService.initializeTheme();
     });
   }
 
   ngOnInit() {
-  }
-
-  checkDarkMode() {
-    const prefersColor = window.matchMedia('(prefers-color-scheme: dark)');
-    if (prefersColor.matches) {
-      document.body.classList.toggle('dark');
-    }
   }
 
   private initRoutingProgress() {

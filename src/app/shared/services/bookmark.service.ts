@@ -44,14 +44,14 @@ export class BookmarkService {
     }
     this.cacheService.storeCacheObjectData(Constants.cacheKeys.bookmarks, cachedMoviesData);
     this.updateBookmarkTab(cachedMoviesData);
-    this.showToastMessage(`${movie.title} removed from bookmarks`);
+    this.showToastMessage(`${movie.title} removed from watch list`);
     return Promise.resolve();
   }
 
   async bookmarkMovie(movie: Movies): Promise<void> {
     const data = await this.cacheService.getCacheData(Constants.cacheKeys.bookmarks);
     data.value === null ? this.initialBookmark(movie) : this.addMovieToBookmarks(movie, data.value);
-    this.showToastMessage(`${movie.title} added to bookmarks`);
+    this.showToastMessage(`${movie.title} added to watch list`);
     return Promise.resolve();
   }
 

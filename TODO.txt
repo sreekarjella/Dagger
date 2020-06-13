@@ -1,6 +1,6 @@
 1. Filter bar in search page with functionality.
 2. Theming.
-3. Dark mode switcher.                      (https://commentedcoding.com/toggle-dark-mode-with-ionic-5/)
+3. Dark mode switcher.                      == Completed
 4. Bookmarks live update from cache.		== Completed
 5. Logo branding.
 6. Lighthouse.

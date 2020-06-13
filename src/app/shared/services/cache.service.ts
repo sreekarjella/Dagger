@@ -16,7 +16,7 @@ export class CacheService {
   }
 
   storeCacheObjectData(key: string, value: any): Promise<void> {
-    if (!value) {
+    if (value === null || value === undefined || value === []) {
       return Promise.resolve();
     }
     return this.storeCacheData(key, JSON.stringify(value));

@@ -44,7 +44,8 @@ export const cacheKeys = {
     bookmarks: 'bookmarks',
     topPicks: 'topPicks',
     mostViewed: 'mostViewed',
-    topRated: 'topRated'
+    topRated: 'topRated',
+    theme: 'theme'
 };
 
 export const bannerSlideOptions = {

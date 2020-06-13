@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>settings-tab</ion-title>
+    <ion-title>Controls</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,9 +9,9 @@
     <ion-item lines="full">
       <ion-icon slot="start" name="moon"></ion-icon>
       <ion-label>
-        Toggle Dark Theme
+        Toggle Dark Mode
       </ion-label>
-      <ion-toggle [(ngModel)]="darkMode" (ionChange)="updateDarkMode()" slot="end"></ion-toggle>
+      <ion-toggle [(ngModel)]="darkMode" (ionChange)="updateDarkMode($event)" slot="end"></ion-toggle>
     </ion-item>
   </ion-list>
 </ion-content>

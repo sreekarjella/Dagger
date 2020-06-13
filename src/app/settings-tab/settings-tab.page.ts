@@ -1,3 +1,4 @@
+import { ThemeService } from './../shared/services/theme.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,17 +8,16 @@ import { Component } from '@angular/core';
 })
 export class SettingsTabPage {
 
-  darkMode = true;
+  darkMode: boolean;
 
-  constructor() {
-    const prefersColor = window.matchMedia('(prefers-color-scheme: dark)');
-    this.darkMode = prefersColor.matches;
-    // this.updateDarkMode();
-  }
+  constructor(private themeService: ThemeService) {
+    this.themeService.darkMode$.subscribe((value: boolean) => {
+      this.darkMode = value;
+    });
+   }
 
-  updateDarkMode() {
-    this.darkMode = !this.darkMode;
-    document.body.classList.toggle('dark');
+  updateDarkMode(event) {
+    this.themeService.toggleAppTheme();
   }
 
 }
