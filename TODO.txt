@@ -1,5 +1,5 @@
 1. Filter bar in search page with functionality.
-2. Theming.
+2. Theming.                                 == Completed
 3. Dark mode switcher.                      == Completed
 4. Bookmarks live update from cache.		== Completed
 5. Logo branding.
@@ -11,6 +11,6 @@
 11. Try(Tap Synopsis to expand)			    == Completed
 12. Try(Tap ion-toast to dismiss)		    == Completed
 13. Try(ViewCounter for web page)
-14. Header redesigning
+14. Header redesigning                      == Completed
 15. Exception Handling for api call's
 16. Try(Service Worker)

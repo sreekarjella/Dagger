@@ -1,10 +1,11 @@
 <ion-header mode="ios">
-    <ion-toolbar>
+    <ion-toolbar mode="ios">
         <ion-buttons slot="start">
             <ion-button (click)="goBack()" role="button">
                 <ion-icon name="chevron-back"></ion-icon>
             </ion-button>
         </ion-buttons>
+        <ion-title *ngIf="movieData" [innerHtml]="movieData.title"></ion-title>
     </ion-toolbar>
 </ion-header>
 

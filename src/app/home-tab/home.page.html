@@ -1,20 +1,17 @@
 <app-header></app-header>
 
-<ion-content>
-
+<ion-content fullscreen="true">
+  
   <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="refreshHomeContent($event)">
-    <ion-refresher-content
-      pullingIcon="chevron-down-circle-outline"
-      pullingText="Pull to refresh"
-      refreshingSpinner="circles"
-      refreshingText="Refreshing...">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+      refreshingSpinner="circles" refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
 
   <ng-container *ngIf="!topPickMovies && !mostViewedMovies && !topRatedMovies">
     <ion-spinner class="spinner-center" color="tertiary" name="circles"></ion-spinner>
   </ng-container>
- 
+
   <div *ngIf="topPickMovies && mostViewedMovies && topRatedMovies" class="ion-margin-top">
     <ion-slides pager="true" [options]="bannerSlideOpts">
       <ion-slide *ngFor="let movie of topPickMovies">
