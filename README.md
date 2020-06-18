@@ -1,5 +1,5 @@
 # Dagger
-A mobile based web app for downloading free movies.
+A mobile based web app for downloading movies for free.
 
 **Project based on Ionic framework 5**
 
