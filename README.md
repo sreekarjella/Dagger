@@ -9,5 +9,5 @@ A mobile based web app for downloading free movies.
 - Ionic        -- 5
 
 ## Project Setup
-- Run "npm install" for setting up the project
-- Run "npm run app-local" for serving the project.
+- Run **npm install** for setting up the project
+- Run **npm run app-local** for serving the project.
