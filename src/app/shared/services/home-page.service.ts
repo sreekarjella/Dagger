@@ -17,6 +17,20 @@ export class HomePageService {
     private cacheService: CacheService
   ) { }
 
+  event: any;
+
+  refreshContent(event): Promise<void> {
+    this.event = event;
+    this.homeContentInitialization().subscribe(() => {
+      event.target.complete();
+    });
+    return Promise.resolve();
+  }
+
+  stopRefresher() {
+    this.event.target.complete();
+  }
+
   homeContentInitialization(): Observable<void> {
     // tslint:disable-next-line: deprecation
     return forkJoin(

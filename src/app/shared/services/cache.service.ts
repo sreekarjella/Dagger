@@ -30,4 +30,10 @@ export class CacheService {
     Plugins.Storage.remove({ key });
   }
 
+  getKeys(): Promise<{
+    keys: string[];
+  }> {
+    return Plugins.Storage.keys();
+  }
+
 }

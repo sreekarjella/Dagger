@@ -1,4 +1,5 @@
-import { Movies } from './../shared/model/Movies';
+import { Plugins } from '@capacitor/core';
+import { Movies } from '@shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
 import * as Constants from '@shared/services/constants';
 import { Router } from '@angular/router';
@@ -30,6 +31,14 @@ export class HomePage implements OnInit {
     this.onInitInitializations();
   }
 
+  ionViewDidEnter() {
+    setTimeout(() => {
+      this.homeService.homeContentInitialization().subscribe(() => {
+        this.onInitInitializations();
+      });
+    }, 10000);
+  }
+
   onInitInitializations() {
     this.getTopPickMovies();
     this.getMostViewedMovies();
@@ -59,10 +68,9 @@ export class HomePage implements OnInit {
   }
 
   refreshHomeContent(event) {
-      this.homeService.homeContentInitialization().subscribe(() => {
-        this.onInitInitializations();
-        event.target.complete();
-      });
+    this.homeService.refreshContent(event).then(() =>
+      this.onInitInitializations()
+    );
   }
 
 }

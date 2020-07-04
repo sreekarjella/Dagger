@@ -2,7 +2,7 @@
 2. Theming.                                 == Completed
 3. Dark mode switcher.                      == Completed
 4. Bookmarks live update from cache.		== Completed
-5. Logo branding.
+5. Logo branding.                           == Completed
 6. Lighthouse.
 7. More categories in home page.
 8. UI alignment in detailed movie page.
@@ -12,5 +12,5 @@
 12. Try(Tap ion-toast to dismiss)		    == Completed
 13. Try(ViewCounter for web page)
 14. Header redesigning                      == Completed
-15. Exception Handling for api call's
+15. Global Exception Handling for api call's== Completed
 16. Try(Service Worker)

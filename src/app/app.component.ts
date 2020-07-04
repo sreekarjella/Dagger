@@ -1,7 +1,7 @@
 import { ThemeService } from './shared/services/theme.service';
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { Router, NavigationStart, NavigationCancel, NavigationEnd, NavigationError, RouterOutlet } from '@angular/router';
+import { Router, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
 import { Capacitor, Plugins } from '@capacitor/core';
 
 @Component({

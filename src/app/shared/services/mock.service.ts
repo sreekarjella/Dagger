@@ -1,12 +1,12 @@
-import { MoviesResponseMapper, MovieResponseMapper } from './../model/Mappers';
+import { MoviesResponseMapper, MovieResponseMapper } from '@shared/model/Mappers';
 import { Movies } from '@shared/model/Movies';
-import { Response } from './../model/Response';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import * as Constants from '@shared/services/constants';
+import { Response } from '@shared/model/Response';
 
 @Injectable({
   providedIn: 'root'
