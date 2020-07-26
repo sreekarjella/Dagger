@@ -39,6 +39,7 @@ export class ErrorHandlerService implements ErrorHandler {
   };
 
   handleError(error: Error | HttpErrorResponse): void {
+    console.log(error);
     this.networkService.networkStatus.connected ?
       this.alertService.presentAlert(this.errorConfig) : this.alertService.presentAlert(this.noInternetConfig);
   }

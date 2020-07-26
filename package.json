@@ -5,7 +5,7 @@
   "homepage": "https://torrhub.netlify.app",
   "scripts": {
     "ng": "ng",
-    "app-local": "ng serve --host 0.0.0.0 --disableHostCheck true",
+    "app-local": "ng serve --host 0.0.0.0",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",

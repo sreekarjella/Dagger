@@ -28,7 +28,9 @@ export class HomePageService {
   }
 
   stopRefresher() {
-    this.event.target.complete();
+    if (this.event) {
+      this.event.target.complete();
+    }
   }
 
   homeContentInitialization(): Observable<void> {
