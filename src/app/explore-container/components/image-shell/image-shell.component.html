@@ -1,0 +1,2 @@
+<ion-spinner *ngIf="!imageLoaded" color="tertiary" name="circles"></ion-spinner>
+<img [hidden]="!imageLoaded" [src]="_src" [alt]="_alt" (load)="_imageLoaded()"/>

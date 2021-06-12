@@ -9,6 +9,15 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
+        path: 'detailed-movie',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../detailed-movie/detailed-movie.module').then( m => m.DetailedMoviePageModule)
+          }
+        ]
+      },
+      {
         path: 'HomeTab',
         children: [
           {
@@ -25,6 +34,24 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../search-tab/search.module').then(m => m.SearchPageModule)
+          }
+        ]
+      },
+      {
+        path: 'BookmarksTab',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../bookmarks-tab/bookmarks-tab.module').then(m => m.BookmarksTabPageModule)
+          }
+        ]
+      },
+      {
+        path: 'SettingsTab',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../settings-tab/settings-tab.module').then(m => m.SettingsTabPageModule)
           }
         ]
       },
@@ -46,4 +73,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

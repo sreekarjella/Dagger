@@ -1,3 +1,4 @@
+import { HomePageService } from '@shared/services/home-page.service';
 import { Movies } from './../shared/model/Movies';
 import { Component, OnInit } from '@angular/core';
 import { MockService } from '@shared/services/mock.service';
@@ -8,28 +9,55 @@ import { MockService } from '@shared/services/mock.service';
   styleUrls: ['search.page.scss']
 })
 export class SearchPage implements OnInit {
-  data: Movies[] = [];
-  dataLoaded = false;
+  searchData: Movies[] = [];
+  latestData: Movies[] = [];
   searchValue = '';
-  constructor(private mockService: MockService) { }
+  pageNumber = 1;
+  showSpinner = false;
+
+  constructor(
+    private mockService: MockService,
+    private homePageService: HomePageService
+  ) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
+    this.loadLatestMovies();
   }
 
   searchMovie(event: any) {
     this.searchValue = event.target.value;
+    this.showSpinner = true;
     if (event.target.value.length !== 0) {
       this.mockService.getListOfMoviesBySearchOperation(this.searchValue).subscribe((response: Movies[]) => {
         if (response.length !== 0) {
-          this.data = response;
+          this.searchData = response;
         } else {
-          this.data = [];
+          this.searchData = [];
         }
+        this.showSpinner = false;
       });
     } else {
-      this.data = [];
+      this.searchData = [];
+      this.showSpinner = false;
     }
-    this.dataLoaded = true;
+  }
+
+  loadLatestMovies(): Promise<void> {
+    this.homePageService.latestMovies(this.pageNumber).subscribe((movies: Movies[]) => {
+      this.latestData = this.latestData.concat(movies);
+      this.showSpinner = false;
+    });
+    return Promise.resolve();
+  }
+
+  loadMovies(event) {
+    this.pageNumber += 1;
+    setTimeout(() => {
+      this.loadLatestMovies().then(() => {
+        event.target.complete();
+      });
+    }, 1000);
   }
 
 }

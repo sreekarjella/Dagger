@@ -1,10 +1,11 @@
 <ion-header mode="ios">
-    <ion-toolbar>
-        <ion-buttons fill="clear" (click)="goBack()">
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="start">
             <ion-button (click)="goBack()" role="button">
                 <ion-icon name="chevron-back"></ion-icon>
             </ion-button>
         </ion-buttons>
+        <ion-title *ngIf="movieData" [innerHtml]="movieData.title"></ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -17,7 +18,7 @@
     <ion-grid *ngIf="dataLoaded && movieData && suggestedMovies.length !== 0">
         <ion-row>
             <ion-col size="12" size-md>
-                <ion-img [alt]="movieData.title_long" [src]="movieData.large_cover_image"></ion-img>
+                <app-image-shell [src]="movieData.large_cover_image" [alt]="movieData.title_long"></app-image-shell>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -28,7 +29,7 @@
             </ion-col>
         </ion-row>
         <ion-row>
-            <ion-col class="no-top-padding" size="2" size-md>
+            <ion-col size="2" size-md>
                 <ion-img src="../../../../assets/icon/imdb.svg"></ion-img>
             </ion-col>
             <ion-col class="ion-text-center" size="3" size-md>
@@ -38,8 +39,8 @@
         </ion-row>
         <ion-row>
             <ion-col size="12" size-md>
-                <ng-container *ngFor="let genere of movieData.genres; let index  = index">
-                    <ion-text>{{genere}}&nbsp;</ion-text>
+                <ng-container *ngFor="let genre of movieData.genres; let index  = index">
+                    <ion-text>{{genre}}&nbsp;</ion-text>
                     <ng-container *ngIf="index !== movieData.genres.length - 1">
                         <ion-text>/&nbsp;</ion-text>
                     </ng-container>
@@ -62,13 +63,13 @@
         <ion-row>
             <ion-col size="12" size-md>
                 <ion-text>
-                    <h4>Available in</h4>
+                    <h4 class="no-bottom-margin">Available in</h4>
                 </ion-text>
             </ion-col>
         </ion-row>
         <ion-row>
             <ng-container *ngFor="let torrent of movieData.torrents">
-                <ion-col size="6" size-md>
+                <ion-col size="6" size-md class="ion-padding-start">
                     <ion-text class="capitalize-text vertical-text-align">{{torrent.quality}} {{torrent.type}}
                         {{torrent.size}}</ion-text>
                 </ion-col>
@@ -82,13 +83,15 @@
             <ion-row>
                 <ion-col size="12" size-md>
                     <ion-text>
-                        <h4>Synopsis</h4>
+                        <h4 class="no-bottom-margin">Synopsis</h4>
                     </ion-text>
                 </ion-col>
             </ion-row>
             <ion-row>
                 <ion-col size="12" size-md>
-                    <ion-text>{{movieData.description_full}}</ion-text>
+                    <app-expandable-card>
+                        <ion-text>&nbsp;&nbsp;&nbsp;&nbsp;{{movieData.description_full}}</ion-text>
+                    </app-expandable-card>
                 </ion-col>
             </ion-row>
         </ng-container>
@@ -96,24 +99,28 @@
             <ion-row>
                 <ion-col size="12" size-md>
                     <ion-text>
-                        <h4>Cast</h4>
+                        <h4 class="no-bottom-margin">Cast</h4>
                     </ion-text>
                 </ion-col>
             </ion-row>
             <ion-row>
                 <ion-col size="12" size-md>
                     <ion-list>
-                        <ion-item *ngFor="let cast of movieData.cast">
-                            <ion-avatar slot="start">
-                                <ion-img [alt]="cast.name" [src]="cast.url_small_image">
-                                </ion-img>
-                            </ion-avatar>
-                            <ion-label>
-                                <ion-text>
-                                    {{cast.name}} as {{cast.character_name}}
-                                </ion-text>
-                            </ion-label>
-                        </ion-item>
+                        <ng-container *ngFor="let cast of movieData.cast">
+                            <ion-item *ngIf="cast.name && cast.character_name">
+                                <ng-container>
+                                    <ion-avatar slot="start">
+                                        <ion-img [alt]="cast.name" [src]="cast.url_small_image">
+                                        </ion-img>
+                                    </ion-avatar>
+                                    <ion-label>
+                                        <ion-text>
+                                            {{cast.name}} as {{cast.character_name}}
+                                        </ion-text>
+                                    </ion-label>
+                                </ng-container>
+                            </ion-item>
+                        </ng-container>
                     </ion-list>
                 </ion-col>
             </ion-row>
@@ -123,17 +130,23 @@
             <ion-row>
                 <ion-col size="12" size-md>
                     <ion-text>
-                        <h4>You may also like</h4>
+                        <h4 class="no-bottom-margin">You may also like</h4>
                     </ion-text>
                 </ion-col>
             </ion-row>
             <ion-row>
                 <ion-col class="ion-padding" size="6" size-md *ngFor="let movie of suggestedMovies">
-                    <ion-img [alt]="movie.title_english" [src]="movie.medium_cover_image"
-                        (click)="suggestedMovieReload(movie.id)"></ion-img>
+                    <app-image-shell [src]="movie.medium_cover_image" [alt]="movie.title_english"
+                        (click)="suggestedMovieReload(movie.id)"></app-image-shell>
                 </ion-col>
             </ion-row>
         </ng-container>
 
     </ion-grid>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="addOrRemoveBookmark()">
+            <ion-icon class="bookmark-icon" [name]="bookmarkIcon"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

@@ -40,6 +40,14 @@ export const LIST_MOVIES_PARAMETERS = {
     }
 };
 
+export const cacheKeys = {
+    bookmarks: 'bookmarks',
+    topPicks: 'topPicks',
+    mostViewed: 'mostViewed',
+    topRated: 'topRated',
+    theme: 'theme'
+};
+
 export const bannerSlideOptions = {
     preloadImages: false,
     lazy: {

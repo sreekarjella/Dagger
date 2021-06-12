@@ -1,6 +1,7 @@
+import { ThemeService } from './shared/services/theme.service';
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { Router, NavigationStart, NavigationCancel, NavigationEnd, NavigationError, RouterOutlet } from '@angular/router';
+import { Router, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
 import { Capacitor, Plugins } from '@capacitor/core';
 
 @Component({
@@ -11,7 +12,8 @@ import { Capacitor, Plugins } from '@capacitor/core';
 export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
-    private router: Router
+    private router: Router,
+    private themeService: ThemeService
   ) {
     this.initializeApp();
   }
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit {
       if (Capacitor.isPluginAvailable('SplashScreen')) {
         Plugins.SplashScreen.hide();
       }
+      this.themeService.initializeTheme();
     });
   }
 
@@ -40,7 +43,7 @@ export class AppComponent implements OnInit {
         case event instanceof NavigationCancel:
         case event instanceof NavigationEnd:
         case event instanceof NavigationError: {
-          this.routerLoading =  true;
+          this.routerLoading = true;
           break;
         }
         default: break;

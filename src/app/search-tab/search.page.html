@@ -1,20 +1,35 @@
-<ion-content fullscreen>
+<ion-content>
 
-  <ion-searchbar placeholder="Search" (keyup)="searchMovie($event)" class="ion-padding-top">
+  <ion-searchbar placeholder="Search movies" (keyup)="searchMovie($event)" class="ion-padding-top">
   </ion-searchbar>
-  <div *ngIf="data.length === 0 && searchValue.length === 0" class="ion-padding">
+  <div *ngIf="searchData.length === 0 && searchValue.length !== 0" class="ion-padding">
     <ion-text class="ion-text-start">
-      <h6>Try searching for movies, actors, directors or with IMDB code</h6>
-    </ion-text>
-  </div>
-  <div *ngIf="dataLoaded && data.length === 0 && searchValue.length !== 0" class="ion-padding">
-    <ion-text class="ion-text-start">
-      <h6>Sorry. We have not listed that down.</h6>
+      <h6>Sorry! We have not listed that down.</h6>
     </ion-text>
   </div>
 
-  <ng-container *ngIf="dataLoaded && data.length !== 0" onload="onload()">
-    <app-movie-cover [movies]="data"></app-movie-cover>
+  <ion-spinner *ngIf="showSpinner" class="spinner-center" color="tertiary" name="circles"></ion-spinner>
+
+  <ng-container *ngIf="searchData.length !== 0 && searchValue.length !== 0">
+    <app-movie-cover [movies]="searchData"></app-movie-cover>
   </ng-container>
+
+  <ng-container *ngIf="latestData.length !== 0 && searchValue.length === 0">
+    <ion-grid class="no-bottom-padding">
+      <ion-row>
+        <ion-col size="12" size-md class="ion-padding no-bottom-padding">
+          <ion-text>
+            <h4 class="ion-no-margin">Recently added</h4>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <app-movie-cover [movies]="latestData"></app-movie-cover>
+  </ng-container>
+
+  <ion-infinite-scroll threshold="200px" (ionInfinite)="loadMovies($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more movies...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>
